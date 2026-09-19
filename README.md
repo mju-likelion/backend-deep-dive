@@ -9,57 +9,33 @@
 ## 전체 지도
 
 ```mermaid
-flowchart LR
-    classDef done fill:#dcfce7,stroke:#16a34a,color:#14532d
-    classDef now  fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
-    classDef topic fill:#f8fafc,stroke:#94a3b8,color:#0f172a
+flowchart TB
+    classDef done fill:#dcfce7,stroke:#16a34a,color:#14532d,font-size:16px
+    classDef now  fill:#dbeafe,stroke:#2563eb,color:#1e3a8a,font-size:16px
+    classDef part fill:#ffffff,stroke:#64748b,color:#0f172a,font-size:18px,font-weight:bold
 
-    subgraph P1["1부 · Spring Boot 트랙 (완료 · 10주)"]
-        direction TB
-        J["Java 문법 · 객체지향 · Collections"] --> DI["자바로 배우는 IoC/DI"]
-        DI --> SB["Spring Boot · REST API"]
-        SB --> JPA["JPA · 연관관계 · 트랜잭션"]
-        JPA --> MP["개인 미니 프로젝트"]
+    subgraph P1["1부 · Spring Boot 트랙 (완료 · 10주) — 서버를 만든다"]
+        direction LR
+        J["Java · 객체지향"] --> DI["IoC / DI"] --> SB["Spring Boot · REST"] --> JPA["JPA · 트랜잭션"] --> MP["미니 프로젝트"]
     end
 
-    subgraph P2["2부 · 운영 기본기 (완료 · 7편)"]
-        direction TB
-        D["Docker"] --> L["Lightsail 배포"]
-        L --> H["도메인 & HTTPS"]
-        H --> CI["CI/CD"]
-        CI --> M["모니터링 & 알림"]
-        M --> LG["로그 관리"]
-        LG --> BK["DB 백업 자동화"]
+    subgraph P2["2부 · 운영 기본기 (완료 · 7편) — 서비스처럼 띄운다"]
+        direction LR
+        D["Docker"] --> L["Lightsail"] --> H["HTTPS"] --> CI["CI/CD"] --> M["모니터링"] --> LG["로그"] --> BK["DB 백업"]
     end
 
-    subgraph P3["3부 · 심화 리서치 (진행 중)"]
-        direction TB
-        A["A. Spring / Java 심화"]
-        B["B. PostgreSQL 심화"]
-        C["C. AI<br/>LLM 앱 · 온톨로지 · 모델 내부"]
-        DD["D. 인프라 / 아키텍처"]
-        E["E. CS / 개발자 소양"]
+    subgraph P3["3부 · 심화 리서치 (진행 중) — 한 주제를 끝까지 판다"]
+        direction LR
+        A["A. Spring / Java"] ~~~ B["B. PostgreSQL"] ~~~ C["C. AI"] ~~~ DD["D. 인프라"] ~~~ E["E. CS"]
     end
 
-    P1 -- "서버를 만든다" --> P2
-    P2 -- "서비스처럼 띄운다" --> P3
+    P1 ==> P2 ==> P3
 
-    MP -. "JPA를 써봤으니 내부를 뜯는다" .-> A
-    JPA -. "DB를 써봤으니 인덱스·MVCC를 본다" .-> B
-    BK -. "운영을 해봤으니 무중단·관측·k8s로" .-> DD
-    MP -. "만든 앱에 AI를 붙인다" .-> C
-
-    class P1,J,DI,SB,JPA,MP done
-    class P2,D,L,H,CI,M,LG,BK done
-    class P3 now
-    class A,B,C,DD,E topic
-
-    click A "./research/RESEARCH_TOPICS.md#a-spring--java-심화"
-    click B "./research/RESEARCH_TOPICS.md#b-postgresql-심화"
-    click C "./research/RESEARCH_TOPICS.md#c-ai"
-    click DD "./research/RESEARCH_TOPICS.md#d-인프라--아키텍처"
-    click E "./research/RESEARCH_TOPICS.md#e-cs--개발자-소양"
+    class P1,P2,P3 part
+    class J,DI,SB,JPA,MP,D,L,H,CI,M,LG,BK done
+    class A,B,C,DD,E now
 ```
+
 
 - 1부는 Java 문법부터 Spring Boot·JPA까지 10주 커리큘럼으로 진행했습니다. 각자 작성한 코드는 [`spring/`](./spring)에 있습니다.
 - 2부는 "앞 편이 만든 불편함을 다음 편이 해결한다"는 흐름으로 7편을 진행했습니다. 끝나면 "내 앱 하나가 자동 배포되고, 죽으면 알림 오고, 데이터도 백업된다"는 1인 서비스 운영이 완성됩니다. 이 지점에서 강의형은 마무리했습니다.
