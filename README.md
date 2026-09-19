@@ -1,26 +1,48 @@
 # backend-deep-dive · 멋사 백엔드 스터디
 
-> Spring 커리큘럼을 마치고 넘어온 백엔드 스터디 레포입니다. (구 `zero-to-devops`)
-> **1부(배포/운영 기본기)** 는 강의형으로 DB 백업 자동화까지 진행했고,
-> **2부는 각자 주제를 골라 깊게 파서 발표하는 리서치형**으로 전환했습니다.
+> 멋사 백엔드 스터디 레포입니다. (구 `zero-to-devops`)
+> **1부(Spring Boot 트랙)** 와 **2부(배포/운영 기본기)** 는 강의형으로 진행했고,
+> **3부는 각자 주제를 골라 깊게 파서 발표하는 리서치형**으로 전환했습니다.
 
 ---
 
 ## 전체 지도
 
 ```
-[1부] 운영 기본기 (완료)                 [2부] 심화 리서치 (진행 중)
-"내 앱을 서비스처럼 띄운다"      →       "한 주제를 끝까지 파서 발표한다"
-Docker ~ DB 백업 자동화, 7편             Spring · PostgreSQL · AI · 인프라 · CS
+[1부] Spring Boot 트랙 (완료)      [2부] 운영 기본기 (완료)          [3부] 심화 리서치 (진행 중)
+"서버를 만든다"              →    "내 앱을 서비스처럼 띄운다"   →   "한 주제를 끝까지 파서 발표한다"
+Java ~ JPA ~ 미니 프로젝트, 10주    Docker ~ DB 백업 자동화, 7편      Spring · PostgreSQL · AI · 인프라 · CS
 ```
 
-- 1부는 "앞 편이 만든 불편함을 다음 편이 해결한다"는 흐름으로 7편을 진행했습니다.
-- 1부가 끝나면 "내 앱 하나가 자동 배포되고, 죽으면 알림 오고, 데이터도 백업된다"는 1인 서비스 운영이 완성됩니다. 이 지점에서 강의형은 마무리했습니다.
-- 2부는 강의 대신 **각자 리서치 → 발표 → Q&A** 로 진행합니다. 주제 목록과 운영 규칙은 [`research/RESEARCH_TOPICS.md`](./research/RESEARCH_TOPICS.md)에 있습니다.
+- 1부는 Java 문법부터 Spring Boot·JPA까지 10주 커리큘럼으로 진행했습니다. 이 레포에는 산출물이 없고, 아래 표로 기록만 남깁니다.
+- 2부는 "앞 편이 만든 불편함을 다음 편이 해결한다"는 흐름으로 7편을 진행했습니다. 끝나면 "내 앱 하나가 자동 배포되고, 죽으면 알림 오고, 데이터도 백업된다"는 1인 서비스 운영이 완성됩니다. 이 지점에서 강의형은 마무리했습니다.
+- 3부는 강의 대신 **각자 리서치 → 발표 → Q&A** 로 진행합니다. 주제 목록과 운영 규칙은 [`research/RESEARCH_TOPICS.md`](./research/RESEARCH_TOPICS.md)에 있습니다.
 
 ---
 
-## 1부 — 운영 기본기 (완료)
+## 1부 — Spring Boot 트랙 (완료 · 산출물 없음)
+
+> 테마: **Java와 Spring Boot로 서버를 만든다.** API 설계, 데이터베이스, JPA까지 백엔드 전반.
+> 별도 플랫폼에서 진행해 이 레포에는 자료가 없습니다. 3부 리서치 주제 A(Spring/Java 심화)의 선행 과정입니다.
+
+| 주차 | 미션 | 핵심 키워드 | 단계 |
+| --- | --- | --- | --- |
+| 1주 | Java 핵심 문법 & 흐름 | 변수, 조건문, 반복문 | Java |
+| 2주 | 객체지향 I - 클래스와 캡슐화 | Class, Field, Method | Java |
+| 3주 | 객체지향 II - 상속/다형성/추상화 | Inheritance, Polymorphism, Interface | Java |
+| 4주 | Java Collections & 설계 확장 | List, Map, Generics | Java |
+| 5주 | 자바로 배우는 IoC/DI | IoC, DI, Constructor Injection | Java |
+| 6주 | Spring Boot 전환 | Spring Boot, Bean, Annotation | Spring Core |
+| 7주 | REST API 설계 (CRUD) | REST, HTTP, DTO | Spring Core |
+| 8주 | JPA 기초 & 영속성 컨텍스트 | JPA, Entity, Repository | JPA |
+| 9주 | 연관관계 & 트랜잭션 | @OneToMany, @ManyToOne, Transactional | JPA |
+| 10주 | 개인 미니 프로젝트: 예외 처리 통합 & 프론트엔드 연동 | Architecture, Refactoring | Project |
+
+**1부 완료 시점:** "Java 문법 → 객체지향 → DI → Spring Boot → REST API → JPA"까지 혼자 CRUD 서버를 만들 수 있다.
+
+---
+
+## 2부 — 운영 기본기 (완료)
 
 > 테마: **내 앱 하나를 진짜 서비스처럼 띄우고 운영한다.**
 
@@ -34,11 +56,11 @@ Docker ~ DB 백업 자동화, 7편             Spring · PostgreSQL · AI · 인
 | 6 | [로그 관리 편](./6_logs.md) | "logs를 언제까지 손으로 보냐" | 로그 수집·검색 |
 | 7 | [DB 백업 자동화 편](./7_db_backup.md) | "데이터 날아가면 끝인데?" | cron, mysqldump |
 
-**1부 완료 시점:** "내 앱 하나가 자동 배포되고, 죽으면 알림 오고, 데이터도 백업된다" = 1인 서비스 운영 완성.
+**2부 완료 시점:** "내 앱 하나가 자동 배포되고, 죽으면 알림 오고, 데이터도 백업된다" = 1인 서비스 운영 완성.
 
 ---
 
-## 2부 — 심화 리서치 (진행 중)
+## 3부 — 심화 리서치 (진행 중)
 
 > 테마: **한 주제를 "이미 써본 사람이 잘못 알고 있던 걸 바로잡는" 깊이까지 파서 발표한다.**
 
