@@ -170,7 +170,7 @@ research/
 | E8 | **문자열·시간·숫자: 실무 버그의 근원** | 유니코드·UTF-8·정규화(NFC/NFD, 한글 자소 분리 버그), 이모지와 `length()`의 불일치, DB collation, 타임존·DST·`Instant` vs `LocalDateTime` vs `ZonedDateTime` 선택, DB `timestamp` vs `timestamptz`, 부동소수점 오차와 돈 계산(`BigDecimal`), 정수 오버플로<br>**데모**: 실제 장애 사례 5개를 재현하는 테스트 코드 | |
 | E9 | **API 설계론** | REST의 한계(리소스 모델링이 안 되는 행위, 과다/과소 페칭), gRPC(스트리밍·스키마 진화) / GraphQL(N+1·복잡도 제어) 선택 기준, 버저닝 전략과 하위 호환 규칙, 페이지네이션(offset vs cursor), 멱등키, 에러 응답 표준 RFC 9457, OpenAPI 스펙 우선 개발<br>**데모**: 같은 도메인을 REST/gRPC/GraphQL로 구현해 트레이드오프 비교 | |
 | E10 | **시스템 디자인 종합** | "우리 프로젝트에 트래픽 100배가 오면": 병목 예측(DB 쓰기·읽기·세션·파일), 읽기 분산·캐시·큐·CDN 도입 순서, 데이터 규모별 선택 변화, 비용 추정, 단일 장애점 제거<br>**실습**: 설계 문서 작성 → 다른 참가자가 공격(리뷰) → 수정. 발표는 공격받은 지점과 수정 근거 중심 | |
-| E11 | **Git 내부 구조** | 객체 모델(blob/tree/commit/tag)과 콘텐츠 주소화, ref와 HEAD, rebase가 실제로 하는 일(커밋 재생성), merge 전략(ort, squash, fast-forward)의 히스토리 차이, reflog로 복구, `bisect`로 회귀 찾기, 대용량 레포와 부분 클론<br>**데모**: `.git` 디렉터리 직접 뜯어보기, 잘못된 `reset --hard` 후 reflog로 살려내기 | |
+| E11 | **Git 내부 구조** | 객체 모델(blob/tree/commit/tag)과 콘텐츠 주소화, ref와 HEAD, rebase가 실제로 하는 일(커밋 재생성), merge 전략(ort, squash, fast-forward)의 히스토리 차이, reflog로 복구, `bisect`로 회귀 찾기, 대용량 레포와 부분 클론<br>**데모**: `.git` 디렉터리 직접 뜯어보기, 잘못된 `reset --hard` 후 reflog로 살려내기 |@jjangjjangsunho |
 | E12 | **JVM 실행 원리: 바이트코드·JIT·클래스 로딩** | 바이트코드와 `javap`, 클래스 로더 계층과 `ClassNotFoundException` vs `NoClassDefFoundError`, 인터프리터 → C1 → C2 티어드 컴파일, 인라이닝·탈출 분석, 워밍업이 벤치마크를 망치는 이유(JMH), AOT/GraalVM 네이티브 이미지의 트레이드오프<br>**실측**: JMH로 워밍업 전후 성능 차이, 네이티브 이미지 vs JIT 기동 시간·처리량 비교 | |
 | E13 | **소프트웨어 설계: 클린/헥사고날 아키텍처 실전** | 레이어드 vs 헥사고날 vs 클린의 실제 차이(의존 방향), 포트·어댑터가 테스트에 주는 이점, 과설계 비판(간단한 CRUD에 5계층), 도메인 모델 vs 트랜잭션 스크립트, 패키지 구조 논쟁(계층별 vs 기능별)<br>**실전**: 멋사 프로젝트 한 도메인을 헥사고날로 리팩터링해 전후 테스트 용이성·코드량 비교 | |
 
