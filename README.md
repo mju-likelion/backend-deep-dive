@@ -8,10 +8,57 @@
 
 ## 전체 지도
 
-```
-[1부] Spring Boot 트랙 (완료)      [2부] 운영 기본기 (완료)          [3부] 심화 리서치 (진행 중)
-"서버를 만든다"              →    "내 앱을 서비스처럼 띄운다"   →   "한 주제를 끝까지 파서 발표한다"
-Java ~ JPA ~ 미니 프로젝트, 10주    Docker ~ DB 백업 자동화, 7편      Spring · PostgreSQL · AI · 인프라 · CS
+```mermaid
+flowchart LR
+    classDef done fill:#dcfce7,stroke:#16a34a,color:#14532d
+    classDef now  fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    classDef topic fill:#f8fafc,stroke:#94a3b8,color:#0f172a
+
+    subgraph P1["1부 · Spring Boot 트랙 (완료 · 10주)"]
+        direction TB
+        J["Java 문법 · 객체지향 · Collections"] --> DI["자바로 배우는 IoC/DI"]
+        DI --> SB["Spring Boot · REST API"]
+        SB --> JPA["JPA · 연관관계 · 트랜잭션"]
+        JPA --> MP["개인 미니 프로젝트"]
+    end
+
+    subgraph P2["2부 · 운영 기본기 (완료 · 7편)"]
+        direction TB
+        D["Docker"] --> L["Lightsail 배포"]
+        L --> H["도메인 & HTTPS"]
+        H --> CI["CI/CD"]
+        CI --> M["모니터링 & 알림"]
+        M --> LG["로그 관리"]
+        LG --> BK["DB 백업 자동화"]
+    end
+
+    subgraph P3["3부 · 심화 리서치 (진행 중)"]
+        direction TB
+        A["A. Spring / Java 심화"]
+        B["B. PostgreSQL 심화"]
+        C["C. AI<br/>LLM 앱 · 온톨로지 · 모델 내부"]
+        DD["D. 인프라 / 아키텍처"]
+        E["E. CS / 개발자 소양"]
+    end
+
+    P1 -- "서버를 만든다" --> P2
+    P2 -- "서비스처럼 띄운다" --> P3
+
+    MP -. "JPA를 써봤으니 내부를 뜯는다" .-> A
+    JPA -. "DB를 써봤으니 인덱스·MVCC를 본다" .-> B
+    BK -. "운영을 해봤으니 무중단·관측·k8s로" .-> DD
+    MP -. "만든 앱에 AI를 붙인다" .-> C
+
+    class P1,J,DI,SB,JPA,MP done
+    class P2,D,L,H,CI,M,LG,BK done
+    class P3 now
+    class A,B,C,DD,E topic
+
+    click A "./research/RESEARCH_TOPICS.md#a-spring--java-심화"
+    click B "./research/RESEARCH_TOPICS.md#b-postgresql-심화"
+    click C "./research/RESEARCH_TOPICS.md#c-ai"
+    click DD "./research/RESEARCH_TOPICS.md#d-인프라--아키텍처"
+    click E "./research/RESEARCH_TOPICS.md#e-cs--개발자-소양"
 ```
 
 - 1부는 Java 문법부터 Spring Boot·JPA까지 10주 커리큘럼으로 진행했습니다. 각자 작성한 코드는 [`spring/`](./spring)에 있습니다.
