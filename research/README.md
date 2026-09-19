@@ -1,6 +1,6 @@
 # 리서치 본문 디렉토리
 
-참가자별 디렉토리입니다. 규칙은 [`RESEARCH_TOPICS.md`](../RESEARCH_TOPICS.md)의 "산출물" 항목을 따릅니다.
+참가자별 디렉토리입니다. 규칙은 [`RESEARCH_TOPICS.md`](./RESEARCH_TOPICS.md)의 "산출물" 항목을 따릅니다.
 
 - 디렉토리 이름은 GitHub ID 그대로 (대소문자 포함)
 - 파일 이름은 `<주제번호>_<영문slug>.md` (예: `A1_transactional_pitfalls.md`)

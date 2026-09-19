@@ -36,6 +36,7 @@
 
 ```
 research/
+├── RESEARCH_TOPICS.md            # 이 문서 (주제 목록 + 담당자)
 ├── README.md                     # 참가자별 디렉토리 링크 목록 (멘토가 관리)
 ├── jjangjjangsunho/
 │   ├── README.md                 # 내 리서치 목록 + 한 줄 요약 + 발표일
