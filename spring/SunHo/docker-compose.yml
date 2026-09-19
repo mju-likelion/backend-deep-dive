@@ -1,0 +1,88 @@
+# services: 우리가 띄울 컨테이너들의 목록.
+# 여기 적은 'db', 'app'이 곧 컨테이너의 이름이자, 서로를 부르는 주소가 됨.
+services:
+
+  # ─────────────────────────────
+  #  db: MySQL 데이터베이스 컨테이너
+  # ─────────────────────────────
+  db:
+    # 직접 만들 필요 없이 Docker Hub에서 공식 MySQL 8.0 이미지를 가져옴
+    image: mysql:8.0
+
+    # MySQL 컨테이너에 넘겨줄 환경변수들.
+    # ${...} 는 아래 .env 파일에서 값을 가져온다는 뜻 (비번을 여기 직접 안 씀!)
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}  # 루트(최고관리자) 비번
+      MYSQL_DATABASE: ${MYSQL_DATABASE}            # 시작할 때 만들 DB 이름
+      MYSQL_USER: ${MYSQL_USER}                    # 앱이 쓸 일반 계정
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}            # 그 계정 비번
+    # MySQL 실행 옵션. 한글이 안 깨지게 utf8mb4 문자셋을 기본으로 지정.
+    # (이거 안 하면 한글이 ??? 로 저장되는 대참사 발생)
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+
+    # 볼륨 연결: 컨테이너 안의 DB 데이터 폴더(/var/lib/mysql)를
+    # 'mysql-data'라는 볼륨(외장 창고)에 저장.
+    # → 컨테이너를 껐다 켜도 데이터가 살아남음!
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+    # 헬스체크: "이 DB가 진짜 접속 받을 준비가 됐는지" 주기적으로 확인.
+    # MySQL은 컨테이너가 떠도 실제로 준비되기까지 몇 초 걸리는데,
+    # 그 사이에 Spring이 먼저 붙으러 가면 에러남. 그래서 준비 신호가 필요.
+    healthcheck:
+      # mysqladmin ping = "DB야 살아있니?" 하고 물어보는 명령
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s   # 10초마다 물어봄
+      timeout: 5s     # 5초 안에 답 없으면 실패로 침
+      retries: 5      # 5번까지 재시도
+
+    # 컨테이너가 (에러 등으로) 죽으면 자동으로 다시 살림.
+    # (단, 내가 일부러 멈춘 경우는 재시작 안 함)
+    restart: unless-stopped
+
+  # ─────────────────────────────
+  #  app: Spring Boot 앱 컨테이너
+  # ─────────────────────────────
+  app:
+    # image 대신 build: . → 현재 폴더의 Dockerfile로 이미지를 직접 빌드
+    build: .
+
+    # 포트 매핑: "서버의 8080 포트 → 컨테이너의 8080 포트" 연결.
+    # 왼쪽이 바깥(서버), 오른쪽이 안(컨테이너).
+    # 이게 있어야 외부에서 http://서버IP:8080 으로 접속 가능.
+    ports:
+      - "8080:8080"
+
+    # Spring에게 넘겨줄 환경변수. application.yml에서 이 값들을 받아 씀.
+    environment:
+      # ★★★ 제일 중요 ★★★
+      # DB 주소의 호스트가 'localhost'가 아니라 'db'!
+      # 'db'는 위에서 정의한 MySQL 컨테이너의 서비스 이름.
+      # 컨테이너 안에서 localhost는 '자기 자신'이라 DB를 못 찾음.
+      # Compose 네트워크에선 서비스 이름이 곧 주소가 됨.
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/${MYSQL_DATABASE}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+      #   ?뒤 옵션 설명:
+      #   - useSSL=false: 로컬/내부 통신이라 SSL 끔
+      #   - allowPublicKeyRetrieval=true: MySQL 8 인증 방식 때문에 필수!
+      #     (이거 없으면 'Public Key Retrieval is not allowed' 에러남)
+      #   - serverTimezone=Asia/Seoul: 시간을 한국 시간으로
+      #   - characterEncoding=UTF-8: 한글 인코딩
+      SPRING_DATASOURCE_USERNAME: ${MYSQL_USER}
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+
+    # depends_on: "db가 준비된 다음에 app을 띄워라"
+    # condition: service_healthy → 위 헬스체크가 통과할 때까지 기다림.
+    # (이게 없으면 Spring이 DB보다 먼저 떠서 'Connection refused'로 죽음)
+    depends_on:
+      db:
+        condition: service_healthy
+
+    restart: unless-stopped
+
+# 위에서 쓴 'mysql-data' 볼륨을 여기서 공식 선언.
+# Docker가 알아서 관리하는 저장 공간이 만들어짐.
+volumes:
+  mysql-data:

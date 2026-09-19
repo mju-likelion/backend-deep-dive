@@ -1,0 +1,36 @@
+spring:
+  profiles:
+    include: secret
+
+  application:
+    name: Spring
+
+  datasource:
+    # 로컬: application-secret.yml에서 username/password 주입
+    # Docker: 환경변수 SPRING_DATASOURCE_URL 등으로 덮어씌워짐
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://127.0.0.1:3306/likelion_pbl?serverTimezone=Asia/Seoul&characterEncoding=UTF-8}
+    username: ${SPRING_DATASOURCE_USERNAME:}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.MySQLDialect
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      mode: always
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+jwt:
+  secret: ${JWT_SECRET:}
+  expiration: ${JWT_EXPIRATION:3600000}

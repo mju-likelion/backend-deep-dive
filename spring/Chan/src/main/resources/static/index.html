@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Likelion Member Manager</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* ===== 인증 영역 ===== */
+        .auth-bar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+            padding: 10px 0;
+            margin-bottom: 8px;
+        }
+        .auth-status {
+            font-size: 13px;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        /* ===== 페이지 크기 선택 ===== */
+        .pagination-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .page-size-select {
+            padding: 4px 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+        .page-info {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* ===== 모달 공통 ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal {
+            background: #fff;
+            border-radius: 12px;
+            padding: 28px;
+            width: 420px;
+            max-width: 95vw;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+        }
+        .modal h3 {
+            margin: 0 0 20px 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .modal .form-row {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+        .modal .form-row label {
+            font-size: 13px;
+            color: #555;
+            font-weight: 500;
+        }
+        .modal .form-row input,
+        .modal .form-row select {
+            padding: 9px 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Likelion Member Manager</h1>
+        <p>10주차 | 프론트엔드 - 백엔드 통신 실습</p>
+
+        <!-- ===== 인증 영역 ===== -->
+        <div class="auth-bar">
+            <!-- 로그인 전 -->
+            <div id="authButtons" style="display:flex; gap:8px;">
+                <button class="btn btn-secondary btn-sm" onclick="openSignupModal()">회원가입</button>
+                <button class="btn btn-primary btn-sm" onclick="openLoginModal()">로그인</button>
+            </div>
+            <!-- 로그인 후 -->
+            <div id="authInfo" style="display:none; gap:8px; align-items:center; flex-direction:row;">
+                <span id="authStatus" class="auth-status">✓ 로그인됨</span>
+                <button class="btn btn-secondary btn-sm" onclick="doLogout()">로그아웃</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== Tab Navigation ===== -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('member')">멤버 관리</button>
+        <button class="tab-btn" onclick="switchTab('assignment')">과제 관리</button>
+    </div>
+
+    <!-- ===== Member Tab ===== -->
+    <div id="tab-member" class="tab-content active">
+
+        <div class="card">
+            <h2>멤버 등록</h2>
+            <div class="form-row">
+                <select id="createRoleType" onchange="showCreateForm()">
+                    <option value="LION">LION (아기사자)</option>
+                    <option value="STAFF">STAFF (운영진)</option>
+                </select>
+                <input id="createName" placeholder="이름">
+                <input id="createMajor" placeholder="전공">
+                <input id="createGeneration" type="number" placeholder="기수" min="1">
+                <select id="createPart">
+                    <option value="">파트 선택</option>
+                    <option value="백엔드">백엔드</option>
+                    <option value="프론트엔드">프론트엔드</option>
+                    <option value="기획/디자인">기획/디자인</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <span id="createExtraField">
+                    <input id="createStudentId" placeholder="학번">
+                </span>
+                <button class="btn btn-primary" onclick="createMember()">등록</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>멤버 목록</h2>
+            <div class="filter-bar">
+                <select id="partFilter" onchange="onPartFilterChange()">
+                    <option value="">전체 파트</option>
+                    <option value="백엔드">백엔드</option>
+                    <option value="프론트엔드">프론트엔드</option>
+                    <option value="기획/디자인">기획/디자인</option>
+                </select>
+                <button class="btn btn-secondary btn-sm" onclick="loadMembers()">새로고침</button>
+            </div>
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th><th>이름</th><th>전공</th><th>기수</th><th>파트</th><th>역할</th><th>관리</th>
+                </tr>
+                </thead>
+                <tbody id="memberTableBody">
+                <tr><td colspan="7" class="empty-msg">로딩 중...</td></tr>
+                </tbody>
+            </table>
+            <div class="pagination-controls">
+                <label>
+                    표시 개수:
+                    <select class="page-size-select" id="memberPageSize" onchange="onMemberPageSizeChange()">
+                        <option value="5">5개</option>
+                        <option value="10" selected>10개</option>
+                        <option value="20">20개</option>
+                    </select>
+                </label>
+                <div id="memberPagination"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Assignment Tab ===== -->
+    <div id="tab-assignment" class="tab-content">
+
+        <div class="card">
+            <h2>과제 등록</h2>
+            <div class="form-row">
+                <select id="createAssignmentMemberSelect"><option value="">멤버 선택</option></select>
+                <input id="assignmentTitle" placeholder="과제 제목" style="flex:1">
+                <input id="assignmentDesc" placeholder="과제 설명 (선택사항)" style="flex:1">
+                <button class="btn btn-primary" onclick="createAssignment()">등록</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>전체 과제 조회</h2>
+            <button class="btn btn-primary btn-sm" onclick="loadAllAssignments()">전체 조회</button>
+            <div id="allAssignmentList" class="result-area">
+                <div class="empty-msg">조회 버튼을 눌러주세요.</div>
+            </div>
+            <div class="pagination-controls">
+                <label>
+                    표시 개수:
+                    <select class="page-size-select" id="assignmentPageSize" onchange="onAssignmentPageSizeChange()">
+                        <option value="5">5개</option>
+                        <option value="10" selected>10개</option>
+                        <option value="20">20개</option>
+                    </select>
+                </label>
+                <div id="assignmentPagination"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>멤버별 과제 조회</h2>
+            <div class="form-row">
+                <select id="memberAssignmentSelect"><option value="">멤버 선택</option></select>
+                <button class="btn btn-primary btn-sm" onclick="loadMemberAssignments()">조회</button>
+            </div>
+            <div id="memberAssignmentList" class="result-area">
+                <div class="empty-msg">멤버를 선택하고 조회해주세요.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>과제 단건 조회</h2>
+            <div class="form-row">
+                <input id="assignmentIdInput" type="number" placeholder="과제 ID" min="1">
+                <button class="btn btn-primary btn-sm" onclick="loadAssignmentById()">조회</button>
+            </div>
+            <div id="singleAssignmentResult" class="result-area">
+                <div class="empty-msg">과제 ID를 입력하고 조회해주세요.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>과제 제목 검색</h2>
+            <div class="form-row">
+                <input id="searchKeyword" placeholder="검색어 입력..." style="flex:1"
+                       onkeydown="if(event.key==='Enter') searchAssignments()">
+                <button class="btn btn-primary btn-sm" onclick="searchAssignments()">검색</button>
+            </div>
+            <div id="searchAssignmentList" class="result-area">
+                <div class="empty-msg">검색어를 입력하고 검색해주세요.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>과제 수정</h2>
+            <div class="form-row">
+                <input id="editAssignmentIdInput" type="number" placeholder="과제 ID" min="1">
+                <button class="btn btn-info btn-sm" onclick="loadAssignmentForEdit()">불러오기</button>
+            </div>
+            <div id="editAssignmentForm" style="display:none; margin-top:12px;">
+                <div class="form-row">
+                    <label>제목</label>
+                    <input id="editAssignmentTitleInput" style="flex:1">
+                </div>
+                <div class="form-row">
+                    <label>설명</label>
+                    <input id="editAssignmentDescInput" style="flex:1">
+                </div>
+                <button class="btn btn-primary" onclick="submitUpdateAssignment()">수정 저장</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>과제 삭제</h2>
+            <div class="form-row">
+                <input id="deleteAssignmentIdInput" type="number" placeholder="과제 ID" min="1">
+                <button class="btn btn-danger btn-sm" onclick="deleteAssignmentById()">삭제</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ===== 로그인 모달 ===== -->
+<div id="loginModal" class="modal-overlay">
+    <div class="modal" style="position:relative;">
+        <button class="modal-close" onclick="closeLoginModal()">✕</button>
+        <h3>🦁 로그인</h3>
+        <div class="form-row">
+            <label>아이디</label>
+            <input id="loginId" placeholder="로그인 아이디"
+                   onkeydown="if(event.key==='Enter') doLogin()">
+        </div>
+        <div class="form-row">
+            <label>비밀번호</label>
+            <input id="loginPassword" type="password" placeholder="비밀번호"
+                   onkeydown="if(event.key==='Enter') doLogin()">
+        </div>
+        <div class="modal-actions">
+            <button class="btn btn-secondary" onclick="closeLoginModal()">취소</button>
+            <button class="btn btn-primary" onclick="doLogin()">로그인</button>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 회원가입 모달 ===== -->
+<div id="signupModal" class="modal-overlay">
+    <div class="modal" style="position:relative;">
+        <button class="modal-close" onclick="closeSignupModal()">✕</button>
+        <h3>🦁 회원가입</h3>
+        <div class="form-row">
+            <label>이름</label>
+            <input id="signupName" placeholder="이름">
+        </div>
+        <div class="form-row">
+            <label>전공</label>
+            <input id="signupMajor" placeholder="전공">
+        </div>
+        <div class="form-row">
+            <label>기수</label>
+            <input id="signupGeneration" type="number" placeholder="기수" min="1">
+        </div>
+        <div class="form-row">
+            <label>파트</label>
+            <select id="signupPart">
+                <option value="">파트 선택</option>
+                <option value="백엔드">백엔드</option>
+                <option value="프론트엔드">프론트엔드</option>
+                <option value="기획/디자인">기획/디자인</option>
+            </select>
+        </div>
+        <div class="form-row">
+            <label>학번</label>
+            <input id="signupStudentId" placeholder="학번">
+        </div>
+        <div class="form-row">
+            <label>로그인 아이디</label>
+            <input id="signupLoginId" placeholder="로그인에 사용할 아이디">
+        </div>
+        <div class="form-row">
+            <label>비밀번호</label>
+            <input id="signupPassword" type="password" placeholder="비밀번호">
+        </div>
+        <div class="modal-actions">
+            <button class="btn btn-secondary" onclick="closeSignupModal()">취소</button>
+            <button class="btn btn-primary" onclick="doSignup()">회원가입</button>
+        </div>
+    </div>
+</div>
+
+<!-- ===== Member 수정 Modal ===== -->
+<div id="editMemberModal" class="modal-overlay">
+    <div class="modal">
+        <h3>멤버 수정</h3>
+        <div class="form-row">
+            <label>이름</label>
+            <input id="editName">
+        </div>
+        <div class="form-row">
+            <label>전공</label>
+            <input id="editMajor">
+        </div>
+        <div class="form-row">
+            <label>기수</label>
+            <input id="editGeneration" type="number" min="1">
+        </div>
+        <div class="form-row">
+            <label>파트</label>
+            <select id="editPart">
+                <option value="백엔드">백엔드</option>
+                <option value="프론트엔드">프론트엔드</option>
+                <option value="기획/디자인">기획/디자인</option>
+            </select>
+        </div>
+        <div id="editExtraField" class="form-row"></div>
+        <div class="modal-actions">
+            <button class="btn btn-secondary" onclick="closeEditMemberModal()">취소</button>
+            <button class="btn btn-primary" onclick="submitEditMember()">저장</button>
+        </div>
+    </div>
+</div>
+
+<!-- ===== Toast Container ===== -->
+<div id="toastContainer" class="toast-container"></div>
+
+<!-- ===== HTTP 통신 로그 패널 ===== -->
+<div id="logPanel" class="log-panel expanded">
+    <div class="log-header" onclick="toggleLogPanel()">
+        <span>HTTP 통신 로그</span>
+        <button onclick="clearLog(); event.stopPropagation();">Clear</button>
+    </div>
+    <div class="log-body" id="logBody"></div>
+</div>
+
+<!-- ===== Scripts ===== -->
+<script>
+
+    // ===== 토큰 관리 =====
+    function getToken() { return localStorage.getItem('jwt_token'); }
+    function saveToken(token) { localStorage.setItem('jwt_token', token); }
+    function removeToken() { localStorage.removeItem('jwt_token'); }
+
+    // ===== 인증 UI 업데이트 =====
+    function updateAuthUI() {
+        const token = getToken();
+        document.getElementById('authButtons').style.display = token ? 'none' : 'flex';
+        document.getElementById('authInfo').style.display = token ? 'flex' : 'none';
+    }
+
+    // ===== 로그인 모달 =====
+    function openLoginModal() {
+        document.getElementById('loginModal').classList.add('active');
+        document.getElementById('loginId').focus();
+    }
+    function closeLoginModal() {
+        document.getElementById('loginModal').classList.remove('active');
+        document.getElementById('loginId').value = '';
+        document.getElementById('loginPassword').value = '';
+    }
+
+    async function doLogin() {
+        const loginId = document.getElementById('loginId').value.trim();
+        const password = document.getElementById('loginPassword').value.trim();
+
+        if (!loginId || !password) {
+            alert('아이디와 비밀번호를 입력해주세요.');
+            return;
+        }
+
+        try {
+            const res = await httpFetch('/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ loginId, password })
+            });
+            const data = await res.json();
+            saveToken(data.token);
+            updateAuthUI();
+            closeLoginModal();
+            showToast('로그인되었습니다.', 'success');
+            loadMembers();
+        } catch (e) {}
+    }
+
+    // ===== 로그아웃 =====
+    function doLogout() {
+        removeToken();
+        updateAuthUI();
+        showToast('로그아웃되었습니다.', 'success');
+    }
+
+    // ===== 회원가입 모달 =====
+    function openSignupModal() {
+        document.getElementById('signupModal').classList.add('active');
+    }
+    function closeSignupModal() {
+        document.getElementById('signupModal').classList.remove('active');
+        ['signupName', 'signupMajor', 'signupGeneration', 'signupLoginId', 'signupPassword', 'signupStudentId'].forEach(id => {
+            document.getElementById(id).value = '';
+        });
+        document.getElementById('signupPart').value = '';
+    }
+
+    async function doSignup() {
+        const name = document.getElementById('signupName').value.trim();
+        const major = document.getElementById('signupMajor').value.trim();
+        const generation = parseInt(document.getElementById('signupGeneration').value);
+        const part = document.getElementById('signupPart').value;
+        const studentId = document.getElementById('signupStudentId').value.trim();
+        const loginId = document.getElementById('signupLoginId').value.trim();
+        const password = document.getElementById('signupPassword').value.trim();
+
+        if (!name || !major || !generation || !part || !studentId || !loginId || !password) {
+            alert('모든 필드를 입력해주세요.');
+            return;
+        }
+
+        try {
+            await httpFetch('/auth/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, major, generation, part, studentId, loginId, password })
+                // roleType 제거
+            });
+            closeSignupModal();
+            showToast('회원가입 완료! 로그인해주세요.', 'success');
+            openLoginModal();
+        } catch (e) {}
+    }
+    // ===== HTTP 통신 래퍼 — 토큰 자동 주입 =====
+    async function httpFetch(url, options = {}) {
+        const method = (options.method || 'GET').toUpperCase();
+        const startTime = performance.now();
+        let response;
+
+        const token = getToken();
+        if (token) {
+            options.headers = {
+                ...options.headers,
+                'Authorization': `Bearer ${token}`
+            };
+        }
+
+        try {
+            response = await fetch(url, options);
+        } catch (err) {
+            const duration = Math.round(performance.now() - startTime);
+            addLog(method, url, 'ERR', duration, options.body);
+            addLogDetail(`  Network Error: ${err.message}`);
+            showToast('서버에 연결할 수 없습니다.', 'error');
+            throw err;
+        }
+
+        const duration = Math.round(performance.now() - startTime);
+        addLog(method, url, response.status, duration, options.body);
+
+        // 401 → 자동 로그아웃 + 로그인 모달
+        if (response.status === 401) {
+            removeToken();
+            updateAuthUI();
+            showToast('로그인이 필요합니다.', 'error');
+            openLoginModal();
+            throw new Error('Unauthorized');
+        }
+
+        if (!response.ok) {
+            let errorMessage = `요청 실패 (${response.status})`;
+            try {
+                const errorBody = await response.clone().json();
+                addLogDetail(`  Response: ${JSON.stringify(errorBody)}`);
+                if (errorBody.message) errorMessage = errorBody.message;
+            } catch (e) {}
+            showToast(errorMessage, 'error');
+            throw new Error(errorMessage);
+        }
+
+        return response;
+    }
+
+    // ===== 로그 패널 관리 =====
+    function addLog(method, url, status, duration, requestBody) {
+        const logBody = document.getElementById('logBody');
+        const time = new Date().toLocaleTimeString('ko-KR', { hour12: false });
+        const statusClass = typeof status === 'number'
+            ? (status < 300 ? 's2xx' : status < 500 ? 's4xx' : 's5xx') : 's4xx';
+
+        const entry = document.createElement('div');
+        entry.className = 'log-entry';
+        entry.innerHTML = `
+        <span class="log-time">${time}</span>
+        <span class="log-method ${method}">${method}</span>
+        <span class="log-url">${url}</span>
+        <span class="log-status ${statusClass}">${status}</span>
+        <span class="log-duration">${duration}ms</span>
+    `;
+        if (requestBody) {
+            const detail = document.createElement('div');
+            detail.className = 'log-entry';
+            detail.innerHTML = `<span class="log-time"></span><span style="color:#666;padding-left:60px">  Request: ${requestBody}</span>`;
+            logBody.prepend(detail);
+        }
+        logBody.prepend(entry);
+    }
+
+    function addLogDetail(text) {
+        const logBody = document.getElementById('logBody');
+        const detail = document.createElement('div');
+        detail.className = 'log-entry';
+        detail.innerHTML = `<span class="log-time"></span><span style="color:#f44747;padding-left:60px">${text}</span>`;
+        if (logBody.firstChild?.nextSibling) {
+            logBody.insertBefore(detail, logBody.firstChild.nextSibling);
+        } else {
+            logBody.appendChild(detail);
+        }
+    }
+
+    function clearLog() { document.getElementById('logBody').innerHTML = ''; }
+
+    function toggleLogPanel() {
+        const panel = document.getElementById('logPanel');
+        panel.classList.toggle('expanded');
+        panel.classList.toggle('collapsed');
+    }
+
+    // ===== 토스트 알림 =====
+    function showToast(message, type = 'error') {
+        const container = document.getElementById('toastContainer');
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        toast.innerHTML = `
+        <span class="toast-icon">${type === 'error' ? '!' : 'i'}</span>
+        <span class="toast-msg">${message}</span>
+        <button class="toast-close" onclick="this.parentElement.remove()">&times;</button>
+    `;
+        container.appendChild(toast);
+        setTimeout(() => {
+            toast.classList.add('toast-hide');
+            toast.addEventListener('animationend', () => toast.remove());
+        }, 3000);
+    }
+
+    // ===== Tab 전환 =====
+    function switchTab(tabName) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+        document.getElementById(`tab-${tabName}`).classList.add('active');
+        const buttons = document.querySelectorAll('.tab-btn');
+        if (tabName === 'member') buttons[0].classList.add('active');
+        else { buttons[1].classList.add('active'); loadMemberSelect(); }
+    }
+
+    // ===== 페이지 크기 변경 핸들러 =====
+    function onMemberPageSizeChange() { currentPage = 0; loadMembers(); }
+    function onAssignmentPageSizeChange() { assignmentCurrentPage = 0; loadAllAssignments(); }
+    function onPartFilterChange() { currentPage = 0; loadMembers(); }
+
+    // ===== 모달 바깥 클릭 시 닫기 =====
+    document.addEventListener('click', (e) => {
+        if (e.target.id === 'loginModal') closeLoginModal();
+        if (e.target.id === 'signupModal') closeSignupModal();
+    });
+
+    // ===== 페이지 로드 시 =====
+    document.addEventListener('DOMContentLoaded', () => {
+        updateAuthUI();
+        loadMembers();
+        showCreateForm();
+    });
+</script>
+<script src="/js/member.js"></script>
+<script src="/js/assignment.js"></script>
+
+</body>
+</html>

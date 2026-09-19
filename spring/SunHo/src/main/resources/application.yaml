@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    # ${환경변수} 로 받음 → 실제 값은 docker-compose가 넣어줌.
+    # 코드에 DB 정보를 하드코딩하지 않는 게 핵심.
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      # update: 엔티티에 맞춰 테이블 자동 생성/수정 (학습용으로 편함)
+      # (실무에선 validate + 마이그레이션 도구를 권장하지만 스터디에선 update로 시작)
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+jwt:
+  secret: ${JWT_SECRET:your-secret-key}
+  expiration: 3600000
