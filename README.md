@@ -11,7 +11,7 @@
 ```
 [1부] 운영 기본기 (완료)                 [2부] 심화 리서치 (진행 중)
 "내 앱을 서비스처럼 띄운다"      →       "한 주제를 끝까지 파서 발표한다"
-Docker ~ DB 백업 자동화, 7편             Spring · PostgreSQL · AI 백엔드 · 인프라 · CS
+Docker ~ DB 백업 자동화, 7편             Spring · PostgreSQL · AI · 인프라 · CS
 ```
 
 - 1부는 "앞 편이 만든 불편함을 다음 편이 해결한다"는 흐름으로 7편을 진행했습니다.
@@ -43,7 +43,7 @@ Docker ~ DB 백업 자동화, 7편             Spring · PostgreSQL · AI 백엔
 > 테마: **한 주제를 "이미 써본 사람이 잘못 알고 있던 걸 바로잡는" 깊이까지 파서 발표한다.**
 
 - **주제 목록 & 담당자 등록**: [`research/RESEARCH_TOPICS.md`](./research/RESEARCH_TOPICS.md)
-  - A. Spring / Java 심화 · B. PostgreSQL 심화 · C. AI 백엔드 통합(온톨로지 포함) · D. 인프라 / 아키텍처 · E. CS / 개발자 소양
+  - A. Spring / Java 심화 · B. PostgreSQL 심화 · C. AI(LLM 앱 · 온톨로지 · 모델 내부/추론) · D. 인프라 / 아키텍처 · E. CS / 개발자 소양
   - 원하는 주제의 담당자 칸에 GitHub ID를 적고 커밋하면 본인 주제가 됩니다.
 - **리서치 본문**: [`research/<GitHub ID>/`](./research/README.md) 아래 사람별 디렉토리에 작성
 - **깊이 기준**: 1차 자료 인용, 재현 가능한 데모 또는 실측, 반론/트레이드오프, 우리 프로젝트 연결, 예상 질문 5개
