@@ -11,10 +11,12 @@
 
 1. GitHub에서 이 파일 우상단 ✏️(Edit) 클릭
 2. 원하는 주제 행의 `담당자` 칸에 `@깃허브ID` 입력
-3. `Commit changes` → 쓰기 권한이 없으면 GitHub가 자동으로 fork + PR을 만들어 줍니다. PR 올리면 멘토가 머지합니다.
+3. `Commit changes`
+   - 이 레포에 write 권한이 있는 참가자는 `main`에 바로 커밋됩니다.
+   - 권한이 없으면 GitHub가 자동으로 fork + PR을 만들어 줍니다. PR 올리면 멘토가 머지합니다.
 4. 이미 담당자가 있는 주제는 **협의 없이 덮어쓰지 않기.** 같이 하고 싶으면 `@a @b`로 공동 등록.
 5. 1차로 **1인 1주제**. 전원이 고른 뒤 남는 주제는 2번째로 추가 선택 가능.
-6. 없는 주제를 하고 싶으면 해당 섹션 맨 아래에 행을 추가해서 PR로 제안.
+6. 없는 주제를 하고 싶으면 맨 아래 "제안된 추가 주제" 표에 행을 추가해서 제안.
 
 ### 깊이 기준 (이 기준을 못 넘으면 "얕은 발표"입니다)
 
@@ -28,11 +30,32 @@
 | **우리 프로젝트 연결** | 멋사 프로젝트 코드나 인프라에 적용하면 무엇이 바뀌는지 한 단락 |
 | **예상 질문 5개 + 답** | 발표 전 미리 준비. 청중이 공격할 지점을 스스로 예측 |
 
-### 산출물
+### 산출물: 리서치 본문은 `research/<깃허브ID>/` 아래에
 
-- 발표 자료: 이 레포에 `topics/<번호>_<영문slug>.md` 로 커밋 (예: `topics/A1_transactional_pitfalls.md`)
-- 데모 코드: 같은 폴더 하위 또는 개인 레포 링크
+리서치 본문과 데모 코드는 **사람별 디렉토리**에 넣습니다. 다른 사람 디렉토리는 건드리지 않습니다.
+
+```
+research/
+├── README.md                     # 참가자별 디렉토리 링크 목록 (멘토가 관리)
+├── jjangjjangsunho/
+│   ├── README.md                 # 내 리서치 목록 + 한 줄 요약 + 발표일
+│   ├── A1_transactional_pitfalls.md
+│   └── A1_transactional_pitfalls/   # 데모 코드 (선택, 개인 레포 링크로 대체 가능)
+│       └── ...
+└── parkc31/
+    ├── README.md
+    └── C10_kinetic_layer_actions.md
+```
+
+규칙:
+
+- 디렉토리 이름은 **GitHub ID 그대로** (대소문자 포함). 예: `research/SeokH-dev/`
+- 리서치 파일 이름은 `<주제번호>_<영문slug>.md`. 주제번호는 이 문서의 `#` 칸(A1, B3, C10 …)과 일치시킵니다.
+- 자기 디렉토리의 `README.md`에 리서치 목록·한 줄 요약·발표일을 유지합니다.
+- 데모 코드가 크면 개인 레포에 두고 본문에서 링크. 작으면 같은 이름의 하위 폴더에 넣습니다.
+- 본문 구조 권장: **주제문(한 문장) → 흔한 오해 → 내부 동작 → 재현/실측 → 트레이드오프와 반론 → 우리 프로젝트 적용 → 예상 질문 5개 → 참고한 1차 자료**
 - 발표 시간: **30분 발표 + 15분 Q&A** 기준
+- 발표 전날까지 `main`에 커밋 (write 권한 있는 참가자) 또는 PR (그 외)
 
 ---
 
@@ -83,17 +106,20 @@
 | C7 | **MCP 서버 직접 만들기** | 프로토콜 스펙(JSON-RPC, 3 프리미티브, 트랜스포트), 스테이트리스 HTTP 전환 의미, 툴 스키마 설계가 모델 정확도에 미치는 영향, 인증·권한, 툴 포이즈닝 방어, REST 래핑과의 차이<br>**데모**: 우리 서비스 DB를 읽는 MCP 서버 구현 → Claude Code/Claude Desktop에 연결. (기존 `MCP.md` 참고) | |
 | C8 | **Claude Code 스킬/플러그인으로 팀 워크플로 자동화** | `CLAUDE.md` 설계 원칙(무엇을 넣고 무엇을 빼는가), 커스텀 스킬·서브에이전트·훅, 코드리뷰 자동화, 컨텍스트 비용 관리, 팀 컨벤션을 도구로 강제하는 법<br>**실전**: 실제 팀 레포에 적용해서 2주 써본 결과(도움된 것·방해된 것) 가져오기 | |
 
-### C-2. 온톨로지 & 지식그래프
+### C-2. 온톨로지: Palantir Foundry 문서 구조를 따라 4회차
 
-> 온톨로지는 한 회차로 묶으면 "RDF가 뭔지" 소개로 끝나기 쉬워서 **3회차로 나눕니다.**
-> 기초(C9) → LLM 결합(C10) → 서비스 적용(C11) 순서로, 각각 독립 발표 가능하지만 앞 회차를 전제로 합니다.
-> 인원이 부족하면 C9+C10을 한 명이 묶어서 진행.
+> Palantir는 온톨로지를 **시맨틱 레이어**(Object · Property · Link · Interface)와 **키네틱 레이어**(Action · Function)로 나누고,
+> 그 아래에 **아키텍처**(저장·인덱싱·권한·SDK), 그 위에 **AIP**(LLM 에이전트)를 얹습니다.
+> 공식 문서(https://www.palantir.com/docs/foundry/ontology/overview)의 이 구분을 그대로 4회차로 나눕니다.
+> 발표는 "Palantir가 이렇게 한다" 소개가 아니라, **같은 개념을 우리 Spring + PostgreSQL 스택으로 구현하면 어떻게 되는가**가 핵심입니다.
+> 인원이 부족하면 C9+C10, C11+C12로 묶어서 2회차로 진행.
 
 | # | 주제 | 반드시 다룰 것 · 데모 | 담당자 |
 | --- | --- | --- | --- |
-| C9 | **온톨로지 기초: 지식을 스키마로 표현하기** | 온톨로지 vs 택소노미 vs 관계형 스키마 vs 도메인 모델의 차이, RDF 트리플·OWL 클래스/속성/제약, SPARQL 기본, 추론(reasoning)이 실제로 해주는 것(전이 관계·타입 추론)과 비용, 표준 온톨로지 사례(schema.org, FIBO, SNOMED), 왜 시맨틱 웹은 실패했다고 하는가<br>**데모**: 우리 프로젝트 도메인(유저·게시글·모임 등)을 OWL로 모델링하고 SPARQL로 추론 결과 확인 | |
-| C10 | **지식그래프 + LLM: GraphRAG** | 벡터 RAG가 못 하는 질문 유형(다중 홉·집계·관계 질문), 텍스트에서 엔티티·관계 추출(LLM 기반 트리플 추출의 품질 문제), 그래프 DB 선택(Neo4j vs Postgres 위 Apache AGE vs 그냥 관계형 테이블), Microsoft GraphRAG의 커뮤니티 요약 방식, 그래프 질의를 LLM이 생성할 때의 위험<br>**실측**: 같은 문서셋으로 벡터 RAG(C2)와 GraphRAG를 질문 유형별 정답률·비용 비교 | |
-| C11 | **서비스 온톨로지: 에이전트를 위한 시맨틱 레이어** | Palantir Foundry식 온톨로지(객체·링크·액션)가 왜 다시 주목받는가, DDD 애그리거트·바운디드 컨텍스트와의 관계, 에이전트가 툴을 온톨로지 통해 발견·호출하는 구조(C4·C7 연결), 사내 데이터 용어 통일(시맨틱 레이어)이 LLM 정확도에 미치는 영향, 과설계 경계<br>**데모**: 우리 서비스의 도메인 객체·관계·허용 액션을 온톨로지로 정의하고, 에이전트가 그것만 보고 질의·조작하게 만들기 | |
+| C9 | **시맨틱 레이어: Object · Property · Link · Interface** | Palantir 정의 그대로 읽기: Object Type(실세계 엔티티/이벤트의 스키마) vs Object(인스턴스) vs Object Set, Property와 Shared Property, Primary Key와 Title Property, Link Type의 백킹 방식(외래키 vs 다대다 조인 테이블), Interface(객체 타입 다형성), Value Type/Struct. 그리고 이것이 **관계형 스키마·JPA 엔티티·DDD 도메인 모델·RDF/OWL 온톨로지와 무엇이 다른가**. "데이터 모델이 아니라 실제 데이터에 매핑된다"(backing datasource)는 주장의 의미. 시맨틱 웹(RDF/OWL/SPARQL)이 기업에서 실패한 이유와 Palantir가 다르게 한 지점<br>**데모**: 멋사 프로젝트 도메인(유저·모임·게시글 등)을 Object/Link/Interface로 모델링하고, 기존 JPA 엔티티 모델과 나란히 비교. 하나의 Object Type이 여러 테이블(datasource)을 합쳐 백킹되는 경우 구현 | |
+| C10 | **키네틱 레이어: Action · Function · Edits** | Action Type의 구성(Parameters, Submission Criteria, Rules, Side Effects/Webhook)과 "사용자가 한 번에 취하는 변경 집합"이라는 정의, Function(TypeScript/Python)과 Function-backed Action, 파이프라인 데이터와 사용자 편집(Edits)의 분리 저장, Edits-only Property, Writeback Dataset, 편집 충돌 처리. 이것이 **CQRS·커맨드 패턴·도메인 서비스·이벤트 소싱과 어디가 같고 다른가**. 왜 "임의 UPDATE"를 막고 Action만 허용하는가(감사·권한·LLM 안전과의 연결)<br>**데모**: C9 모델 위에 Action 계층 구현. 파라미터 검증 → 제출 조건 → 규칙 실행 → 사이드 이펙트(웹훅) 순서로 동작하고, 편집 이력이 원본 데이터와 분리 저장되는 것 시연 | |
+| C11 | **온톨로지 아키텍처: 저장 · 인덱싱 · 권한 · SDK** | Object Storage V2(Phonograph 대체)가 왜 필요했나: 여러 datasource를 하나의 Object Type으로 인덱싱하고 검색·집계·링크 탐색을 빠르게 하는 구조, 파이프라인 데이터와 Edits를 합쳐 읽는 방식. 권한 모델: Roles, Restricted View(행 단위), Markings(분류 기반), 읽기 시점 강제와 다운스트림 보호의 한계. Ontology SDK(OSDK): 온톨로지에서 타입 있는 SDK를 생성(TS/Python/Java), Object Set 쿼리·집계·링크 로드·Action 적용·Function 호출, 스코프 토큰 + 사용자 권한 이중 적용<br>**데모**: PostgreSQL 위에 "읽기 모델 인덱스"(materialized view 또는 Elasticsearch)를 두고 Object Set 검색·집계 API 구현, 행 단위 권한 필터 적용. OpenAPI 스펙에서 클라이언트 SDK 자동 생성으로 OSDK 흉내 내기. 별도 인덱스 계층이 과한 데이터 규모는 어디까지인가 | |
+| C12 | **AIP: LLM 에이전트가 온톨로지를 쓰는 법** | Palantir AIP가 LLM에 주는 것: 온톨로지가 **툴 목록**(Object 조회·Action 적용·Function 호출)이자 **그라운딩 컨텍스트**(Object Set 기반 retrieval)이자 **권한 경계**가 된다는 구조. 자유 SQL/코드 생성 대신 Action만 호출하게 하는 것의 안전성과 한계. AIP Logic(LLM을 Function처럼 파이프라인에 넣기)과 AIP Evals. 벡터 RAG(C2)·GraphRAG·MCP(C7)·자체 에이전트 루프(C4)와 비교: 온톨로지가 있으면 무엇이 쉬워지고 무엇은 여전히 어려운가<br>**실측**: C9~C11로 만든 온톨로지 위에 에이전트를 올려, (자유 SQL 생성 / 온톨로지 Action만 허용) 두 방식으로 같은 질의·조작 태스크를 수행. 정확도·위험한 동작 발생 횟수·토큰 비용 비교. C6 인젝션 시나리오로 공격도 해보기 | |
 
 ---
 
@@ -144,8 +170,8 @@ A1 @Transactional ─→ A7 이벤트/트랜잭션 경계 ─→ D2 아웃박스
 A2 영속성 컨텍스트 ─→ B1 인덱스/EXPLAIN ─→ B4 락 ─→ B3 격리 수준
 A3 가상 스레드 ─→ E3 I/O 모델 ─→ E4 OS
 B8 마이그레이션 ─→ D5 무중단 배포
-C1 pgvector ─→ C2 RAG ─→ C10 GraphRAG
-C9 온톨로지 기초 ─→ C10 GraphRAG ─→ C11 서비스 온톨로지 (C4 에이전트, C7 MCP와 합류)
+C1 pgvector ─→ C2 RAG ─→ C12 AIP
+C9 시맨틱 레이어 ─→ C10 키네틱 레이어 ─→ C11 아키텍처/SDK ─→ C12 AIP (C4 에이전트, C6 보안, C7 MCP와 합류)
 D4 컨테이너 ─→ D9 쿠버네티스 ─→ D10 IaC
 ```
 
