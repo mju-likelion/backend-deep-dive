@@ -14,16 +14,17 @@
 Java ~ JPA ~ 미니 프로젝트, 10주    Docker ~ DB 백업 자동화, 7편      Spring · PostgreSQL · AI · 인프라 · CS
 ```
 
-- 1부는 Java 문법부터 Spring Boot·JPA까지 10주 커리큘럼으로 진행했습니다. 이 레포에는 산출물이 없고, 아래 표로 기록만 남깁니다.
+- 1부는 Java 문법부터 Spring Boot·JPA까지 10주 커리큘럼으로 진행했습니다. 각자 작성한 코드는 [`spring/`](./spring)에 있습니다.
 - 2부는 "앞 편이 만든 불편함을 다음 편이 해결한다"는 흐름으로 7편을 진행했습니다. 끝나면 "내 앱 하나가 자동 배포되고, 죽으면 알림 오고, 데이터도 백업된다"는 1인 서비스 운영이 완성됩니다. 이 지점에서 강의형은 마무리했습니다.
 - 3부는 강의 대신 **각자 리서치 → 발표 → Q&A** 로 진행합니다. 주제 목록과 운영 규칙은 [`research/RESEARCH_TOPICS.md`](./research/RESEARCH_TOPICS.md)에 있습니다.
 
 ---
 
-## 1부 — Spring Boot 트랙 (완료 · 산출물 없음)
+## 1부 — Spring Boot 트랙 (완료)
 
 > 테마: **Java와 Spring Boot로 서버를 만든다.** API 설계, 데이터베이스, JPA까지 백엔드 전반.
-> 별도 플랫폼에서 진행해 이 레포에는 자료가 없습니다. 3부 리서치 주제 A(Spring/Java 심화)의 선행 과정입니다.
+> 코드는 [`spring/<이름>/`](./spring) 에 사람별로 있습니다. (원본: [BabyLionJD/Spring](https://github.com/BabyLionJD/Spring), 히스토리 포함 이관)
+> 3부 리서치 주제 A(Spring/Java 심화)의 선행 과정입니다.
 
 | 주차 | 미션 | 핵심 키워드 | 단계 |
 | --- | --- | --- | --- |
@@ -44,17 +45,17 @@ Java ~ JPA ~ 미니 프로젝트, 10주    Docker ~ DB 백업 자동화, 7편   
 
 ## 2부 — 운영 기본기 (완료)
 
-> 테마: **내 앱 하나를 진짜 서비스처럼 띄우고 운영한다.**
+> 테마: **내 앱 하나를 진짜 서비스처럼 띄우고 운영한다.** 자료는 [`devops/`](./devops)에 있습니다.
 
 | 회차 | 제목 | 해결하는 불편함 | 핵심 도구 |
 | --- | --- | --- | --- |
-| 1 | [Docker 편](./1_docker.md) | "내 노트북에서만 돌아요" | Docker, docker compose |
-| 2 | [Lightsail 배포 편](./2_aws_lightsail.md) | "어디에 24시간 올리지?" | AWS Lightsail |
-| 3 | [도메인 & HTTPS 편](./3_domain_https.md) | "IP 못생겼고 자물쇠 없음" | Caddy, Let's Encrypt |
-| 4 | [CI/CD 편](./4_cicd.md) | "고칠 때마다 손으로 배포 귀찮음" | GitHub Actions |
-| 5 | [모니터링 & 알림 편](./5_monitoring.md) | "죽으면 어떻게 알지?" | 헬스체크, 디스코드/슬랙 웹훅 |
-| 6 | [로그 관리 편](./6_logs.md) | "logs를 언제까지 손으로 보냐" | 로그 수집·검색 |
-| 7 | [DB 백업 자동화 편](./7_db_backup.md) | "데이터 날아가면 끝인데?" | cron, mysqldump |
+| 1 | [Docker 편](./devops/1_docker.md) | "내 노트북에서만 돌아요" | Docker, docker compose |
+| 2 | [Lightsail 배포 편](./devops/2_aws_lightsail.md) | "어디에 24시간 올리지?" | AWS Lightsail |
+| 3 | [도메인 & HTTPS 편](./devops/3_domain_https.md) | "IP 못생겼고 자물쇠 없음" | Caddy, Let's Encrypt |
+| 4 | [CI/CD 편](./devops/4_cicd.md) | "고칠 때마다 손으로 배포 귀찮음" | GitHub Actions |
+| 5 | [모니터링 & 알림 편](./devops/5_monitoring.md) | "죽으면 어떻게 알지?" | 헬스체크, 디스코드/슬랙 웹훅 |
+| 6 | [로그 관리 편](./devops/6_logs.md) | "logs를 언제까지 손으로 보냐" | 로그 수집·검색 |
+| 7 | [DB 백업 자동화 편](./devops/7_db_backup.md) | "데이터 날아가면 끝인데?" | cron, mysqldump |
 
 **2부 완료 시점:** "내 앱 하나가 자동 배포되고, 죽으면 알림 오고, 데이터도 백업된다" = 1인 서비스 운영 완성.
 
@@ -72,6 +73,17 @@ Java ~ JPA ~ 미니 프로젝트, 10주    Docker ~ DB 백업 자동화, 7편   
 - **발표 형식**: 30분 발표 + 15분 Q&A
 
 원래 2막(무중단 배포·리버스 프록시·환경 분리·캐싱)과 3막(EC2·Terraform·오케스트레이션)으로 계획했던 내용은 강의 대신 리서치 주제로 흡수했습니다. 각각 D5 무중단 배포, D1 Redis 캐시, D10 IaC, D9 쿠버네티스 등에 대응합니다.
+
+---
+
+## 디렉토리 구조
+
+```
+spring/      1부 · Spring Boot 트랙 코드 (사람별)
+devops/      2부 · 배포/운영 강의 자료 1~7편
+research/    3부 · 심화 리서치 주제 목록 + 사람별 리서치 본문
+MCP.md       MCP 발표 자료
+```
 
 ---
 
