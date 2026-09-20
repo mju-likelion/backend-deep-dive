@@ -13,4 +13,4 @@
 | @cij041109-del | [research/cij041109-del](./cij041109-del) | |
 | @jjangjjangsunho | [research/jjangjjangsunho](./jjangjjangsunho) | |
 | @parkc31 | [research/parkc31](./parkc31) | |
-| @SeokH-dev | [research/SeokH-dev](./SeokH-dev) | |
+| @SeokH-dev | [research/SeokH-dev](./SeokH-dev) | C17 |
