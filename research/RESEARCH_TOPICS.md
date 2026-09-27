@@ -64,7 +64,7 @@ research/
 
 | # | 주제 | 반드시 다룰 것 · 데모 | 담당자 |
 | --- | --- | --- | --- |
-| A1 | **`@Transactional`이 안 먹는 순간들** | AOP 프록시 구조(JDK 동적 프록시 vs CGLIB), self-invocation, private/final 메서드, `readOnly`의 실제 효과(Hibernate flush 모드·DB 힌트), 전파 속성별 롤백(REQUIRES_NEW·NESTED), 체크 예외 롤백 안 되는 이유, `@Async`와 만나면 트랜잭션이 끊기는 이유<br>**데모**: 실패 케이스 6종 이상 테스트 코드로 재현 | |
+| A1 | **`@Transactional`이 안 먹는 순간들** | AOP 프록시 구조(JDK 동적 프록시 vs CGLIB), self-invocation, private/final 메서드, `readOnly`의 실제 효과(Hibernate flush 모드·DB 힌트), 전파 속성별 롤백(REQUIRES_NEW·NESTED), 체크 예외 롤백 안 되는 이유, `@Async`와 만나면 트랜잭션이 끊기는 이유<br>**데모**: 실패 케이스 6종 이상 테스트 코드로 재현 |@cij041109-del|
 | A2 | **영속성 컨텍스트 내부와 N+1** | 1차 캐시, 더티 체킹(스냅샷 비교 비용), flush 타이밍과 `AUTO` 모드, 쓰기 지연 SQL 저장소, `merge` vs `persist`, 준영속 상태 함정<br>**실측**: fetch join vs `@EntityGraph` vs `default_batch_fetch_size` vs DTO 프로젝션을 같은 데이터로 쿼리 수·응답 시간 비교. 페이징 + fetch join 메모리 경고 재현. OSIV on/off 커넥션 점유 시간 비교 | |
 | A3 | **가상 스레드(Loom) vs WebFlux** | 플랫폼 스레드 모델의 한계(스레드당 스택, 컨텍스트 스위칭), 가상 스레드가 바꾸는 것과 안 바꾸는 것, pinning(`synchronized`·네이티브 프레임), JDK 24에서 pinning 개선 내용, 스레드 로컬·커넥션 풀 병목<br>**실측**: 같은 I/O 바운드 시나리오를 (MVC 플랫폼 스레드 / MVC 가상 스레드 / WebFlux) 3종 부하 테스트, 처리량·p99·메모리 비교 | |
 | A4 | **Spring Security 6 필터체인 해부** | `SecurityFilterChain` 순서와 각 필터 역할, `SecurityContextHolder` 저장 전략, 세션 vs JWT 비교(무효화·탈취·크기), 리프레시 토큰 회전과 재사용 감지, OAuth2 Authorization Code + PKCE 플로우, 흔한 토큰 취약점(alg=none, 키 혼동, 만료 미검증, 로컬스토리지 저장)<br>**데모**: 필터체인 디버그 로그로 요청 하나 추적, 취약한 JWT 검증 코드 공격 재현 | |
