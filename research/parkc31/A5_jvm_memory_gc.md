@@ -746,28 +746,7 @@ jcmd <pid> GC.heap_dump /dumps/heap.hprof
 
 ---
 
-## 14. 우리 프로젝트에 적용하면
-
-✍️ 아래 항목을 실제 배포 환경에서 확인해 채운다.
-
-- 배포 환경: 서버 메모리 / CPU / Docker 사용 여부 / 현재 JVM 옵션
-- JDK 버전: 17이면 Generational ZGC를 쓸 수 없다(JDK 21+)
-- 실제 선택된 GC와 최대 힙 크기 (`-XX:+PrintFlagsFinal` 또는 `jcmd <pid> VM.flags`)
-- NMT로 측정한 힙 밖 메모리
-
-**적용 방향 (예시)**
-
-```bash
-java \
-  -XX:MaxRAMPercentage=<실측으로 정한 값> \
-  -Xlog:gc*:file=/logs/gc.log:time,uptime,level,tags:filecount=5,filesize=20m \
-  -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/dumps \
-  -jar app.jar
-```
-
----
-
-## 15. 예상 질문과 답
+## 14. 예상 질문과 답
 
 **Q1. ZGC가 멈춤이 짧다면 왜 기본 GC는 G1인가?**
 ZGC는 멈춤을 줄이는 대가로 로드 배리어로 인한 처리량 감소, 동시 GC 스레드의 CPU 사용, 여유 힙과 압축 포인터 불가로 인한 메모리 증가를 치른다. 수 GB 이하 힙의 일반 서버에서는 G1의 수십 ms 멈춤으로 충분하고 효율은 G1이 좋다. (7.4, 7.6)
@@ -789,7 +768,7 @@ GC 로그의 pause에는 safepoint 도달 시간(TTSP)이 포함되지 않는다
 
 ---
 
-## 16. 데모와 실측 결과
+## 15. 데모와 실측 결과
 
 > 측정 환경: OpenJDK 21.0.10, Ubuntu 24.04, CPU 1개, 메모리 4GB, Docker 없음.
 > 데모 코드는 [`A5_jvm_memory_gc/`](./A5_jvm_memory_gc)에 있고 `./run_all.sh` 한 번으로 전부 재현된다. 원본 로그는 [`A5_jvm_memory_gc/results/`](./A5_jvm_memory_gc/results)에 있다. 수치는 CPU 수와 메모리에 따라 달라진다.
@@ -897,7 +876,7 @@ GC Root: static 필드 LeakDemo.LEAK
 
 ---
 
-## 17. 참고한 1차 자료
+## 16. 참고한 1차 자료
 
 - JVM 명세 2.5절 Run-Time Data Areas: <https://docs.oracle.com/javase/specs/jvms/se21/html/jvms-2.html#jvms-2.5>
 - HotSpot GC Tuning Guide (JDK 21): <https://docs.oracle.com/en/java/javase/21/gctuning/>
