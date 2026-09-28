@@ -34,6 +34,9 @@ Spring Boot 앱을 Docker 컨테이너에 올렸다. 컨테이너 메모리 제�
 
 ## 1. JVM 메모리 전체 지도
 
+<img width="1428" height="1294" alt="image" src="https://github.com/user-attachments/assets/b409fcbc-c3da-4101-b415-e374a0af5722" />
+
+
 ### 1.1 명세가 정한 것
 
 JVM 명세(The Java Virtual Machine Specification) 2.5절은 런타임 데이터 영역을 여섯 가지로 정의한다.
