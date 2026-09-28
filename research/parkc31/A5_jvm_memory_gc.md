@@ -891,3 +891,10 @@ GC Root: static 필드 LeakDemo.LEAK
 - ZGC 위키: <https://wiki.openjdk.org/display/zgc>
 - 논문: Detlefs, Flood, Heller, Printezis, "Garbage-First Garbage Collection", ISMM 2004
 - Eclipse MAT: <https://eclipse.dev/mat/>
+
+---
+
+## 17. 참고 블로그
+- JVM 메모리 내부구조 : <https://inpa.tistory.com/entry/JAVA-%E2%98%95-JVM-%EB%82%B4%EB%B6%80-%EA%B5%AC%EC%A1%B0-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%98%81%EC%97%AD-%EC%8B%AC%ED%99%94%ED%8E%B8>
+- GC 동작원리 : <https://inpa.tistory.com/entry/JAVA-%E2%98%95-%EA%B0%80%EB%B9%84%EC%A7%80-%EC%BB%AC%EB%A0%89%EC%85%98GC-%EB%8F%99%EC%9E%91-%EC%9B%90%EB%A6%AC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%F0%9F%92%AF-%EC%B4%9D%EC%A0%95%EB%A6%AC>
+- ZGC (저지연 GC) : <https://iks-room.tistory.com/entry/JVM-%EC%A0%80%EC%A7%80%EC%97%B0-GC-ZGC-%EC%89%BD%EA%B2%8C-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0> 
