@@ -1,0 +1,19 @@
+== GC 멈춤 종류별 ==
+Pause Young (Normal): 849회, 평균 3.70ms, 최대 28.55ms
+Pause Young (Mixed): 556회, 평균 3.10ms, 최대 11.86ms
+Pause Young (Concurrent Start): 223회, 평균 4.56ms, 최대 14.04ms
+Pause Remark: 217회, 평균 0.13ms, 최대 0.95ms
+Pause Cleanup: 179회, 평균 0.09ms, 최대 0.22ms
+Pause Young (Prepare Mixed): 141회, 평균 2.46ms, 최대 6.17ms
+Pause Full: 138회, 평균 24.22ms, 최대 60.37ms
+Concurrent Mark Cycle 완료: 223 회
+GC pause 합계 9616.8ms
+== safepoint ==
+총 2165회 / 도달(TTSP) 합계 79.1ms / safepoint 안 합계 9695.9ms
+  G1CollectForAllocation: 1769회
+  G1PauseRemark: 217회
+  G1PauseCleanup: 179회
+가장 긴 safepoint:
+  G1CollectForAllocation: 도달 6.919ms, 머묾 60.9ms
+  G1CollectForAllocation: 도달 0.001ms, 머묾 47.3ms
+  G1CollectForAllocation: 도달 1.304ms, 머묾 31.3ms

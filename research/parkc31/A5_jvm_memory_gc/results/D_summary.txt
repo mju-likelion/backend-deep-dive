@@ -1,0 +1,9 @@
+GC 총 42회 (Young 25, Full 7)
+Young GC 후 사용량 추이: 3M → 4M → 5M → 9M → 13M → 18M → 24M → 33M → 44M → 54M → 62M → 69M → 77M → 83M → 95M → 103M → 109M → 113M → 117M → 120M → 125M → 127M → 127M → 124M → 124M
+마지막 GC들:
+  0.638s Pause Young (Concurrent Start) (G1 Evacuation Pause) 124M->124M(128M) 0.3ms
+  0.644s Pause Full (G1 Compaction Pause) 124M->124M(128M) 5.7ms
+  0.648s Pause Full (G1 Compaction Pause) 124M->124M(128M) 4.8ms
+  0.654s Pause Young (Normal) (G1 Evacuation Pause) 124M->124M(128M) 0.8ms
+  0.659s Pause Full (G1 Compaction Pause) 124M->124M(128M) 4.3ms
+  0.663s Pause Full (G1 Compaction Pause) 124M->124M(128M) 4.7ms

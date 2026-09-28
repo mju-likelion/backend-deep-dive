@@ -1,0 +1,12 @@
+Pause Young (Normal): 431회, 평균 9.23ms, 최대 32.61ms
+Pause Young (Mixed): 73회, 평균 11.09ms, 최대 46.25ms
+Pause Young (Concurrent Start): 43회, 평균 7.47ms, 최대 42.35ms
+Pause Remark: 43회, 평균 0.42ms, 최대 0.71ms
+Pause Cleanup: 42회, 평균 0.15ms, 최대 1.04ms
+Pause Young (Prepare Mixed): 42회, 평균 6.70ms, 최대 13.21ms
+Pause Full: 1회, 평균 17.00ms, 최대 17.00ms
+Pause Full (Heap Dump Initiated GC): 1회, 평균 19.53ms, 최대 19.53ms
+GC pause 합계 5450ms / 실행 16초
+safepoint 675회, TTSP 합계 22.28ms, 최대 5.478ms
+[9.000s][info][gc       ] GC(343) Pause Full (Heap Dump Initiated GC) 398M->50M(174M) 19.530ms
+[9.053s][info][safepoint] Safepoint "HeapDumper", Time since last: 958699 ns, Reaching safepoint: 3218 ns, Cleanup: 2763 ns, At safepoint: 72995633 ns, Leaving safepoint: 10086 ns, Total: 73011700 ns

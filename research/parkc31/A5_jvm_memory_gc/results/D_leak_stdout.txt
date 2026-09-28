@@ -1,0 +1,17 @@
+requests=200, leaked=9MB
+requests=400, leaked=19MB
+requests=600, leaked=29MB
+requests=800, leaked=39MB
+requests=1000, leaked=48MB
+requests=1200, leaked=58MB
+requests=1400, leaked=68MB
+requests=1600, leaked=78MB
+requests=1800, leaked=87MB
+requests=2000, leaked=97MB
+requests=2200, leaked=107MB
+requests=2400, leaked=117MB
+java.lang.OutOfMemoryError: Java heap space
+Dumping heap to /home/claude/A5_jvm_memory_gc/results/D_leak.hprof ...
+Heap dump file created [132784704 bytes in 0.087 secs]
+
+Exception: java.lang.OutOfMemoryError thrown from the UncaughtExceptionHandler in thread "main"

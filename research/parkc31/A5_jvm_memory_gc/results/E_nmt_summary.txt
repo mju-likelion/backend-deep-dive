@@ -1,0 +1,58 @@
+1524:
+
+Native Memory Tracking:
+
+(Omitting categories weighting less than 1MB)
+
+Total: reserved=1767MB, committed=252MB
+       malloc: 106MB #11083
+       mmap:   reserved=1661MB, committed=146MB
+
+-                 Java Heap (reserved=64MB, committed=64MB)
+                            (mmap: reserved=64MB, committed=64MB, at peak) 
+ 
+-                     Class (reserved=1024MB, committed=0MB)
+                            (classes #688)
+                            (  instance classes #582, array classes #106)
+                            (mmap: reserved=1024MB, committed=0MB, at peak) 
+                            (  Metadata:   )
+                            (    reserved=64MB, committed=0MB)
+                            (    used=0MB)
+                            (    waste=0MB =19.37%)
+                            (  Class space:)
+                            (    reserved=1024MB, committed=0MB)
+                            (    used=0MB)
+                            (    waste=0MB =85.96%)
+ 
+-                    Thread (reserved=219MB, committed=29MB)
+                            (threads #218)
+                            (stack: reserved=218MB, committed=28MB, peak=28MB)
+ 
+-                      Code (reserved=242MB, committed=7MB)
+                            (mmap: reserved=242MB, committed=7MB, at peak) 
+ 
+-                        GC (reserved=36MB, committed=36MB)
+                            (malloc=2MB #1025) (at peak) 
+                            (mmap: reserved=33MB, committed=33MB, at peak) 
+ 
+-                  Compiler (reserved=0MB, committed=0MB)
+                            (arena=0MB #4) (peak=2MB #5)
+ 
+-                  Internal (reserved=2MB, committed=2MB)
+                            (malloc=1MB #2546) (at peak) 
+ 
+-                     Other (reserved=100MB, committed=100MB)
+                            (malloc=100MB #100) (at peak) 
+ 
+-                    Symbol (reserved=1MB, committed=1MB)
+                            (malloc=1MB #93) (at peak) 
+ 
+-        Shared class space (reserved=16MB, committed=13MB, readonly=0MB)
+                            (mmap: reserved=16MB, committed=13MB, peak=13MB) 
+ 
+-               Arena Chunk (reserved=0MB, committed=0MB)
+                            (malloc=0MB #443) (peak=3MB #512) 
+ 
+-                 Metaspace (reserved=64MB, committed=0MB)
+                            (mmap: reserved=64MB, committed=0MB, at peak) 
+ 

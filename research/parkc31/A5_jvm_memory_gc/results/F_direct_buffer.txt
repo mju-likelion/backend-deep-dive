@@ -1,0 +1,4 @@
+== default
+DONE: allocated 2000MB within a 64MB direct memory limit
+== -XX:+DisableExplicitGC
+Exception in thread "main" java.lang.OutOfMemoryError: Cannot reserve 1048576 bytes of direct buffer memory (allocated: 67108864, limit: 67108864)

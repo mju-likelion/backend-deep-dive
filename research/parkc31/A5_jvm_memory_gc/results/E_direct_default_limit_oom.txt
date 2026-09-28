@@ -1,0 +1,5 @@
+Exception in thread "main" java.lang.OutOfMemoryError: Cannot reserve 1048576 bytes of direct buffer memory (allocated: 67108864, limit: 67108864)
+	at java.base/java.nio.Bits.reserveMemory(Bits.java:178)
+	at java.base/java.nio.DirectByteBuffer.<init>(DirectByteBuffer.java:111)
+	at java.base/java.nio.ByteBuffer.allocateDirect(ByteBuffer.java:360)
+	at NativeMemoryDemo.main(NativeMemoryDemo.java:23)

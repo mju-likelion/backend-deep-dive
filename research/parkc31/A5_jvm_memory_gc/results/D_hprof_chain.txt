@@ -1,0 +1,6 @@
+byte[] 전체: 11841개, 123.1MB
+GC Root: static 필드 LeakDemo.LEAK
+  → java/util/ArrayList (size=2517)
+  → Object[] elementData (length=2776)
+  → byte[] 2517개, 개당 51200B, 합계 122.9MB
+힙 전체 byte[] 중 이 경로가 차지하는 비율: 99.8%
