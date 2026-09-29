@@ -2,7 +2,7 @@
 
 > MMLU, HumanEval부터 LLM-as-a-Judge와 자체 평가셋까지
 
-- 실험 대상: **ChatGPT GPT-5.6 Sol (High)**, **Claude Sonnet 5**
+- 실험 대상: **ChatGPT GPT-5.6 Sol (High)**, **Claude Sonnet 5 (높음)**
 - Judge: **Gemini**, **Grok**
 - 평가셋 생성 보조: **Perplexity**
 - 총 문항 수: **50문항**
@@ -330,6 +330,7 @@ Judge 모델이 자신이 주로 생성하는 문체나 답변 구조와 비슷�
 ## 9. 50문항 자체 평가셋으로 직접 비교
 
 이번 실험에서는 **Perplexity를 활용하여 총 50문항의 자체 평가셋을 제작**했다.
+- [평가셋 전체 보기](./eval_set.md)
 
 평가셋은 다음 네 영역으로 구성했다.
 
