@@ -232,18 +232,10 @@ Hibernate가 조회용으로 동작
 
 ![readOnly 실험 결과](./images/1번째.png)
 
-일반 트랜잭션에서는 변경한 값이 DB에 반영되었지만, `readOnly=true`에서는 이번 실험 환경에서 DB의 기존 값이 그대로 유지되었다.
-
-이를 통해 `readOnly=true`가
-
-- DB를 전혀 건드리지 않는다.
-- 모든 쓰기를 강제로 막는다.
-
-라는 의미가 아니라,
-
-**조회 중심의 트랜잭션임을 전달하여 Hibernate의 변경 감지와 Flush 동작에 영향을 줄 수 있는 설정**이라는 것을 확인했다.
-
-따라서 이번 사례는 `@Transactional`이 아예 동작하지 않은 경우라기보다,
+실험 결과
+일반 @Transactional에서는 객체의 값을 변경하자 Hibernate의 Dirty Checking을 통해 DB에도 변경된 값이 반영되었다.
+반면 @Transactional(readOnly = true)에서는 Java 객체의 값 자체는 변경할 수 있었지만, 이번 실험에서는 그 변경 내용이 DB에 자동으로 반영되지 않았다.
+이를 통해 readOnly=true는 “코드에서 값을 아예 수정하지 못하게 막는 기능”이나 “모든 DB 쓰기를 강제로 차단하는 기능”이 아니라, 조회 중심으로 동작하도록 Hibernate의 변경 감지와 Flush 방식에 영향을 주는 설정이라는 것을 확인했다.
 
 > **`readOnly=true`에 대해 내가 기대했던 의미와 실제 동작이 달랐던 사례**
 
