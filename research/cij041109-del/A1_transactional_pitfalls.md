@@ -230,7 +230,7 @@ Hibernate가 조회용으로 동작
 
 ### 실험 결과
 
-![readOnly 실험 결과](./images/01_readonly.png)
+![readOnly 실험 결과](./images/1번째.png)
 
 일반 트랜잭션에서는 변경한 값이 DB에 반영되었지만, `readOnly=true`에서는 이번 실험 환경에서 DB의 기존 값이 그대로 유지되었다.
 
@@ -415,7 +415,7 @@ Proxy를 건물 입구의 경비원이라고 생각해보자.
 
 ### 실험 결과
 
-![Self Invocation 실험 결과](./images/02_self_invocation.png)
+![Self Invocation 실험 결과](./images/2.png)
 
 `inner()`를 외부에서 직접 호출했을 때는 트랜잭션이 정상적으로 시작되었다.
 
@@ -503,7 +503,7 @@ B에서 `RuntimeException`이 발생하면 기본적으로 전체 트랜잭션�
 
 ### 실험 결과
 
-![예외 Rollback 실험 결과](./images/03_exception_rollback.png)
+![예외 Rollback 실험 결과](./images/3.png)
 
 두 경우 모두 먼저 데이터를 DB에 저장한 뒤 예외를 발생시켰다.
 
@@ -557,7 +557,7 @@ A와 B가 같은 트랜잭션에 참여하기 때문에 문제가 생기면 둘�
 
 #### 실험 결과
 
-![REQUIRED 실험 결과](./images/04_required.png)
+![REQUIRED 실험 결과](./images/4.png)
 
 Outer와 Inner 모두 `@Transactional`을 사용했지만, 기본 전파 방식인 `REQUIRED`에서는 같은 트랜잭션에 참여했다.
 
@@ -591,7 +591,7 @@ Commit 또는 Rollback
 
 #### 실험 결과
 
-![REQUIRES_NEW 실험 결과](./images/05_requires_new.png)
+![REQUIRES_NEW 실험 결과](./images/5.png)
 
 Outer에서는 마지막에 예외가 발생하여 저장했던 데이터가 Rollback되었다.
 
@@ -633,7 +633,7 @@ NESTED
 
 #### 실험 결과
 
-![NESTED 실험 결과](./images/06_nested.png)
+![NESTED 실험 결과](./images/6.png)
 
 최종 DB에는 바깥쪽에서 저장한 `NESTED_OUTER` 데이터만 남았고, 안쪽 작업의 데이터는 남지 않았다.
 
@@ -707,7 +707,7 @@ A가 나중에 Rollback된다고 해서 다른 스레드에서 실행된 B의 �
 
 ### 실험 결과
 
-![Async 실험 결과](./images/07_async.png)
+![@Async 실험 결과](./images/7.png)
 
 Outer 작업에서는
 
@@ -835,7 +835,7 @@ Proxy가 호출을 가로챌 수 있음
 
 ### 실험 결과
 
-![Proxy 실험 결과](./images/08_proxy.png)
+![Proxy 실험 결과](./images/8.png)
 
 실제 Service 객체를 확인한 결과 Spring이 만든 **CGLIB Proxy**가 사용되고 있었다.
 
