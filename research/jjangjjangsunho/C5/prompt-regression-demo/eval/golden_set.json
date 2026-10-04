@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "input": "대한민국의 수도는 어디인가?",
+    "expected": "서울"
+  },
+  {
+    "id": 2,
+    "input": "2 + 3 * 4는 얼마인가?",
+    "expected": "14"
+  },
+  {
+    "id": 3,
+    "input": "HTTP 상태 코드 404는 무엇을 의미하는가?",
+    "expected": "찾을 수 없음"
+  },
+  {
+    "id": 4,
+    "input": "Java에서 클래스를 상속할 때 사용하는 키워드는?",
+    "expected": "extends"
+  },
+  {
+    "id": 5,
+    "input": "SQL에서 데이터를 조회할 때 사용하는 명령어는?",
+    "expected": "SELECT"
+  }
+]
