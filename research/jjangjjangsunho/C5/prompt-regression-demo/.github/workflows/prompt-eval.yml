@@ -1,0 +1,57 @@
+name: Prompt Regression Test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  prompt-regression-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # PR에서 변경한 코드
+      - name: Checkout candidate
+        uses: actions/checkout@v6
+        with:
+          path: candidate
+
+      # 비교 대상인 main 코드
+      - name: Checkout baseline
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: baseline
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r candidate/eval/requirements.txt
+
+      # 기존 main 프롬프트 평가
+      - name: Evaluate baseline prompt
+        working-directory: baseline
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python eval/evaluate.py
+
+      # PR에서 변경한 프롬프트 평가
+      - name: Evaluate candidate prompt
+        working-directory: candidate
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python eval/evaluate.py
+
+      # 두 점수 비교
+      - name: Compare scores
+        run: |
+          python candidate/eval/compare.py \
+            baseline/score.txt \
+            candidate/score.txt
