@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 510" width="1080" height="510" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#616161"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#2e7d32"/></marker>
+  </defs>
+  <rect width="1080" height="510" fill="#ffffff"/>
+  <line x1="540" y1="20" x2="540" y2="490" stroke="#e0e0e0" stroke-width="2"/>
+
+  <!-- B-tree -->
+  <text x="30" y="36" font-size="18" font-weight="700" fill="#1565c0">B-tree: 제자리에 덮어쓴다</text>
+  <g stroke="#616161" stroke-width="1.5">
+    <line x1="290" y1="96" x2="170" y2="140"/><line x1="290" y1="96" x2="410" y2="140"/>
+    <line x1="170" y1="176" x2="100" y2="220"/><line x1="170" y1="176" x2="220" y2="220"/>
+    <line x1="410" y1="176" x2="340" y2="220"/><line x1="410" y1="176" x2="460" y2="220"/>
+  </g>
+  <g fill="#e3f2fd" stroke="#1565c0" font-size="13" text-anchor="middle">
+    <rect x="200" y="60" width="180" height="36" rx="3"/>
+    <rect x="90" y="140" width="160" height="36" rx="3"/><rect x="330" y="140" width="160" height="36" rx="3"/>
+    <rect x="50" y="220" width="100" height="36" rx="3"/><rect x="170" y="220" width="100" height="36" rx="3"/>
+    <rect x="410" y="220" width="100" height="36" rx="3"/>
+  </g>
+  <rect x="290" y="220" width="100" height="36" rx="3" fill="#ffcc80" stroke="#e65100" stroke-width="2.5"/>
+  <g font-size="13" text-anchor="middle" fill="#212121">
+    <text x="290" y="83">루트 페이지 (8KB)</text>
+    <text x="170" y="163">내부 페이지</text><text x="410" y="163">내부 페이지</text>
+    <text x="100" y="243">리프</text><text x="220" y="243">리프</text><text x="340" y="243">리프</text><text x="460" y="243">리프</text>
+  </g>
+  <g stroke="#1565c0" stroke-width="1.5" marker-end="url(#a)">
+    <line x1="150" y1="238" x2="168" y2="238"/><line x1="270" y1="238" x2="288" y2="238"/><line x1="390" y1="238" x2="408" y2="238"/>
+  </g>
+  <text x="340" y="278" font-size="12" fill="#e65100" text-anchor="middle">1행 수정이어도 이 8KB 페이지를 그 자리에 다시 쓴다</text>
+
+  <g font-size="14" fill="#212121">
+    <text x="40" y="320">• 노드 1개 = 디스크 페이지 1개, 키가 수백 개 들어간다</text>
+    <text x="40" y="346">• 팬아웃이 커서 수억 행이어도 높이는 3~4</text>
+    <text x="40" y="372">• 위쪽 페이지는 늘 메모리에 있어, 실제 디스크 읽기는 1~2번</text>
+    <text x="40" y="398">• 리프끼리 연결되어 있어 범위 조회는 순차 읽기</text>
+  </g>
+  <rect x="30" y="430" width="490" height="56" rx="6" fill="#f5f5f5"/>
+  <text x="44" y="453" font-size="14" fill="#2e7d32"><tspan font-weight="700">강점</tspan>  읽기가 빠르고 예측 가능하다</text>
+  <text x="44" y="476" font-size="14" fill="#e65100"><tspan font-weight="700">대가</tspan>  랜덤 쓰기, 페이지 단위로 커지는 쓰기 양</text>
+
+  <!-- LSM -->
+  <text x="570" y="36" font-size="18" font-weight="700" fill="#2e7d32">LSM 트리: 모았다가 순차로 쓴다</text>
+  <rect x="570" y="52" width="480" height="78" rx="6" fill="#f1f8e9" stroke="#9ccc65"/>
+  <text x="582" y="70" font-size="12" fill="#689f38">메모리</text>
+  <rect x="610" y="76" width="230" height="40" rx="4" fill="#c8e6c9" stroke="#2e7d32"/>
+  <text x="725" y="101" font-size="13" text-anchor="middle">memtable (정렬됨, 스킵리스트)</text>
+  <line x1="1000" y1="96" x2="842" y2="96" stroke="#2e7d32" stroke-width="2" marker-end="url(#ag)"/>
+  <text x="920" y="88" font-size="13" fill="#2e7d32" text-anchor="middle">쓰기</text>
+
+  <rect x="570" y="150" width="480" height="215" rx="6" fill="#fafafa" stroke="#bdbdbd"/>
+  <text x="582" y="357" font-size="12" fill="#757575">디스크 (SSTable = 정렬된 불변 파일)</text>
+  <line x1="700" y1="116" x2="655" y2="182" stroke="#2e7d32" stroke-width="2" marker-end="url(#ag)"/>
+  <text x="712" y="150" font-size="12" fill="#2e7d32">가득 차면 통째로 순차 기록 (flush)</text>
+
+  <g font-size="13" fill="#616161"><text x="582" y="208">L0</text><text x="582" y="268">L1</text><text x="582" y="328">L2</text></g>
+  <g fill="#e8f5e9" stroke="#2e7d32">
+    <rect x="620" y="186" width="70" height="32" rx="3"/><rect x="700" y="186" width="70" height="32" rx="3"/><rect x="780" y="186" width="70" height="32" rx="3"/>
+    <rect x="620" y="246" width="70" height="32" rx="3"/><rect x="700" y="246" width="70" height="32" rx="3"/><rect x="780" y="246" width="70" height="32" rx="3"/><rect x="860" y="246" width="70" height="32" rx="3"/>
+    <rect x="620" y="306" width="70" height="32" rx="3"/><rect x="700" y="306" width="70" height="32" rx="3"/><rect x="780" y="306" width="70" height="32" rx="3"/><rect x="860" y="306" width="70" height="32" rx="3"/>
+  </g>
+  <text x="942" y="328" font-size="13" fill="#616161">… (L1의 10배)</text>
+  <g stroke="#616161" stroke-width="1.6" marker-end="url(#a)">
+    <line x1="1000" y1="210" x2="1000" y2="250"/><line x1="1000" y1="282" x2="1000" y2="304"/>
+  </g>
+  <text x="992" y="236" font-size="12" fill="#616161" text-anchor="end">컴팩션</text>
+  <text x="890" y="208" font-size="12" fill="#616161">병합 정렬로 아래층에</text>
+  <text x="890" y="224" font-size="12" fill="#616161">다시 쓴다</text>
+
+  <g font-size="14" fill="#212121">
+    <text x="580" y="392">• 읽기는 memtable, L0, L1, L2 … 를 차례로 확인한다</text>
+    <text x="580" y="414">• SSTable마다 블룸 필터를 둬서 키가 없는 파일은 건너뛴다</text>
+  </g>
+  <rect x="570" y="430" width="480" height="56" rx="6" fill="#f5f5f5"/>
+  <text x="584" y="453" font-size="14" fill="#2e7d32"><tspan font-weight="700">강점</tspan>  디스크 쓰기가 항상 순차다</text>
+  <text x="584" y="476" font-size="14" fill="#e65100"><tspan font-weight="700">대가</tspan>  여러 곳을 뒤지는 읽기, 컴팩션의 반복 재쓰기</text>
+</svg>

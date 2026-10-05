@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="1000" height="520" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">
+<rect width="1000" height="520" fill="#fcfcfb"/>
+<text x="40" y="34" font-size="18" font-weight="700" fill="#212121">리스트 한가운데 삽입+삭제 1회의 평균 시간 (JMH, 로그-로그 축)</text>
+<text x="40" y="58" font-size="13" fill="#616161">낮을수록 빠르다. 세로축 한 칸이 10배 차이다.</text>
+<line x1="130" y1="430.0" x2="700" y2="430.0" stroke="#ececea" stroke-width="1"/>
+<text x="120" y="434.0" font-size="12" fill="#757575" text-anchor="end">10 ns</text>
+<line x1="130" y1="371.7" x2="700" y2="371.7" stroke="#ececea" stroke-width="1"/>
+<text x="120" y="375.7" font-size="12" fill="#757575" text-anchor="end">100 ns</text>
+<line x1="130" y1="313.3" x2="700" y2="313.3" stroke="#ececea" stroke-width="1"/>
+<text x="120" y="317.3" font-size="12" fill="#757575" text-anchor="end">1 µs</text>
+<line x1="130" y1="255.0" x2="700" y2="255.0" stroke="#ececea" stroke-width="1"/>
+<text x="120" y="259.0" font-size="12" fill="#757575" text-anchor="end">10 µs</text>
+<line x1="130" y1="196.7" x2="700" y2="196.7" stroke="#ececea" stroke-width="1"/>
+<text x="120" y="200.7" font-size="12" fill="#757575" text-anchor="end">100 µs</text>
+<line x1="130" y1="138.3" x2="700" y2="138.3" stroke="#ececea" stroke-width="1"/>
+<text x="120" y="142.3" font-size="12" fill="#757575" text-anchor="end">1 ms</text>
+<line x1="130" y1="80.0" x2="700" y2="80.0" stroke="#ececea" stroke-width="1"/>
+<text x="120" y="84.0" font-size="12" fill="#757575" text-anchor="end">10 ms</text>
+<line x1="130" y1="430" x2="700" y2="430" stroke="#bdbdbd"/>
+<text x="130.0" y="452" font-size="13" fill="#424242" text-anchor="middle">1천 개</text>
+<text x="415.0" y="452" font-size="13" fill="#424242" text-anchor="middle">1만 개</text>
+<text x="700.0" y="452" font-size="13" fill="#424242" text-anchor="middle">10만 개</text>
+<text x="415.0" y="476" font-size="12" fill="#757575" text-anchor="middle">리스트 크기</text>
+<polyline points="130.0,366.2 415.0,309.1 700.0,250.2" fill="none" stroke="#2a78d6" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="130.0" cy="366.2" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="415.0" cy="309.1" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="700.0" cy="250.2" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<text x="714" y="248.2" font-size="13" font-weight="700" fill="#212121">12.1 µs</text>
+<rect x="714" y="256.2" width="10" height="10" rx="2" fill="#2a78d6"/>
+<text x="730" y="265.2" font-size="12" fill="#424242">ArrayList.add(i, x)</text>
+<polyline points="130.0,289.3 415.0,236.1 700.0,177.1" fill="none" stroke="#eb6834" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="130.0" cy="289.3" r="5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="415.0" cy="236.1" r="5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="700.0" cy="177.1" r="5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<text x="714" y="175.1" font-size="13" font-weight="700" fill="#212121">217 µs</text>
+<rect x="714" y="183.1" width="10" height="10" rx="2" fill="#eb6834"/>
+<text x="730" y="192.1" font-size="12" fill="#424242">LinkedList.add(i, x)</text>
+<polyline points="130.0,303.5 415.0,207.3 700.0,88.6" fill="none" stroke="#1baf7a" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="130.0" cy="303.5" r="5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="415.0" cy="207.3" r="5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="700.0" cy="88.6" r="5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"/>
+<text x="714" y="86.6" font-size="13" font-weight="700" fill="#212121">7.1 ms</text>
+<rect x="714" y="94.6" width="10" height="10" rx="2" fill="#1baf7a"/>
+<text x="730" y="103.6" font-size="12" fill="#424242">LinkedList.add(i, x), 노드가 흩어진 경우</text>
+<polyline points="130.0,404.7 415.0,374.8 700.0,426.0" fill="none" stroke="#eda100" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="130.0" cy="404.7" r="5" fill="#eda100" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="415.0" cy="374.8" r="5" fill="#eda100" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="700.0" cy="426.0" r="5" fill="#eda100" stroke="#fcfcfb" stroke-width="2"/>
+<text x="714" y="424.0" font-size="13" font-weight="700" fill="#212121">12 ns</text>
+<rect x="714" y="432.0" width="10" height="10" rx="2" fill="#eda100"/>
+<text x="730" y="441.0" font-size="12" fill="#424242">LinkedList 이터레이터 삽입</text>
+<path d="M686.0 250.2 V177.1" stroke="#9e9e9e" stroke-dasharray="3 3"/>
+<text x="678.0" y="217.6" font-size="12" font-weight="700" fill="#424242" text-anchor="end">18배</text>
+<path d="M646.0 177.1 V88.6" stroke="#9e9e9e" stroke-dasharray="3 3"/>
+<text x="652" y="136.8" font-size="12" font-weight="700" fill="#424242">수십 배 <tspan font-weight="400" fill="#757575">(오차 ±5.2ms)</tspan></text>
+<text x="40" y="506" font-size="12" fill="#757575">Apple M1, Docker VM(CPU 8), Temurin JDK 21.0.12. fork 3회 × 측정 10회. 오차 범위는 본문 표 참고.</text>
+</svg>

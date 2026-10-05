@@ -1,0 +1,909 @@
+# JMH version: 1.37
+# VM version: JDK 21.0.12.1, OpenJDK 64-Bit Server VM, 21.0.12.1+1-LTS
+# VM invoker: /opt/java/openjdk/bin/java
+# VM options: -Xms1g -Xmx1g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: e6.ListInsertBenchmark.arrayList_addRemoveMiddle
+# Parameters: (size = 1000)
+
+# Run progress: 0.00% complete, ETA 00:09:00
+# Fork: 1 of 3
+# Warmup Iteration   1: 125.730 ns/op
+# Warmup Iteration   2: 156.051 ns/op
+# Warmup Iteration   3: 163.029 ns/op
+# Warmup Iteration   4: 157.388 ns/op
+# Warmup Iteration   5: 157.945 ns/op
+Iteration   1: 118.711 ns/op
+Iteration   2: 126.903 ns/op
+Iteration   3: 123.552 ns/op
+Iteration   4: 126.485 ns/op
+Iteration   5: 132.034 ns/op
+Iteration   6: 145.455 ns/op
+Iteration   7: 121.705 ns/op
+Iteration   8: 174.234 ns/op
+Iteration   9: 185.673 ns/op
+Iteration  10: 188.251 ns/op
+
+# Run progress: 2.78% complete, ETA 00:09:50
+# Fork: 2 of 3
+# Warmup Iteration   1: 131.792 ns/op
+# Warmup Iteration   2: 131.023 ns/op
+# Warmup Iteration   3: 107.068 ns/op
+# Warmup Iteration   4: 107.136 ns/op
+# Warmup Iteration   5: 98.498 ns/op
+Iteration   1: 116.602 ns/op
+Iteration   2: 119.602 ns/op
+Iteration   3: 137.652 ns/op
+Iteration   4: 127.768 ns/op
+Iteration   5: 138.708 ns/op
+Iteration   6: 158.818 ns/op
+Iteration   7: 135.415 ns/op
+Iteration   8: 104.037 ns/op
+Iteration   9: 106.481 ns/op
+Iteration  10: 107.982 ns/op
+
+# Run progress: 5.56% complete, ETA 00:09:54
+# Fork: 3 of 3
+# Warmup Iteration   1: 104.140 ns/op
+# Warmup Iteration   2: 104.316 ns/op
+# Warmup Iteration   3: 121.084 ns/op
+# Warmup Iteration   4: 107.559 ns/op
+# Warmup Iteration   5: 139.595 ns/op
+Iteration   1: 104.335 ns/op
+Iteration   2: 99.694 ns/op
+Iteration   3: 102.942 ns/op
+Iteration   4: 101.641 ns/op
+Iteration   5: 110.083 ns/op
+Iteration   6: 100.147 ns/op
+Iteration   7: 98.598 ns/op
+Iteration   8: 98.096 ns/op
+Iteration   9: 99.446 ns/op
+Iteration  10: 108.842 ns/op
+
+
+Result "e6.ListInsertBenchmark.arrayList_addRemoveMiddle":
+  123.996 ±(99.9%) 16.946 ns/op [Average]
+  (min, avg, max) = (98.096, 123.996, 188.251), stdev = 25.364
+  CI (99.9%): [107.051, 140.942] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.12.1, OpenJDK 64-Bit Server VM, 21.0.12.1+1-LTS
+# VM invoker: /opt/java/openjdk/bin/java
+# VM options: -Xms1g -Xmx1g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: e6.ListInsertBenchmark.arrayList_addRemoveMiddle
+# Parameters: (size = 10000)
+
+# Run progress: 8.33% complete, ETA 00:09:35
+# Fork: 1 of 3
+# Warmup Iteration   1: 1528.479 ns/op
+# Warmup Iteration   2: 1317.144 ns/op
+# Warmup Iteration   3: 1229.111 ns/op
+# Warmup Iteration   4: 1609.397 ns/op
+# Warmup Iteration   5: 1529.571 ns/op
+Iteration   1: 1295.556 ns/op
+Iteration   2: 1844.870 ns/op
+Iteration   3: 1838.633 ns/op
+Iteration   4: 1548.287 ns/op
+Iteration   5: 1381.814 ns/op
+Iteration   6: 1151.225 ns/op
+Iteration   7: 1051.117 ns/op
+Iteration   8: 1174.869 ns/op
+Iteration   9: 1329.306 ns/op
+Iteration  10: 1320.803 ns/op
+
+# Run progress: 11.11% complete, ETA 00:09:58
+# Fork: 2 of 3
+# Warmup Iteration   1: 1058.943 ns/op
+# Warmup Iteration   2: 1254.785 ns/op
+# Warmup Iteration   3: 1177.963 ns/op
+# Warmup Iteration   4: 1084.020 ns/op
+# Warmup Iteration   5: 1057.732 ns/op
+Iteration   1: 1024.285 ns/op
+Iteration   2: 1099.986 ns/op
+Iteration   3: 1045.129 ns/op
+Iteration   4: 1129.185 ns/op
+Iteration   5: 1008.175 ns/op
+Iteration   6: 993.725 ns/op
+Iteration   7: 1203.746 ns/op
+Iteration   8: 1053.207 ns/op
+Iteration   9: 1077.064 ns/op
+Iteration  10: 1032.684 ns/op
+
+# Run progress: 13.89% complete, ETA 00:09:26
+# Fork: 3 of 3
+# Warmup Iteration   1: 1095.494 ns/op
+# Warmup Iteration   2: 1018.700 ns/op
+# Warmup Iteration   3: 1041.286 ns/op
+# Warmup Iteration   4: 1048.036 ns/op
+# Warmup Iteration   5: 984.967 ns/op
+Iteration   1: 1024.238 ns/op
+Iteration   2: 1097.758 ns/op
+Iteration   3: 1029.822 ns/op
+Iteration   4: 1037.168 ns/op
+Iteration   5: 1067.955 ns/op
+Iteration   6: 1167.098 ns/op
+Iteration   7: 1093.828 ns/op
+Iteration   8: 1063.759 ns/op
+Iteration   9: 1239.416 ns/op
+Iteration  10: 1058.980 ns/op
+
+
+Result "e6.ListInsertBenchmark.arrayList_addRemoveMiddle":
+  1182.790 ±(99.9%) 147.597 ns/op [Average]
+  (min, avg, max) = (993.725, 1182.790, 1844.870), stdev = 220.916
+  CI (99.9%): [1035.193, 1330.387] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.12.1, OpenJDK 64-Bit Server VM, 21.0.12.1+1-LTS
+# VM invoker: /opt/java/openjdk/bin/java
+# VM options: -Xms1g -Xmx1g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: e6.ListInsertBenchmark.arrayList_addRemoveMiddle
+# Parameters: (size = 100000)
+
+# Run progress: 16.67% complete, ETA 00:08:55
+# Fork: 1 of 3
+# Warmup Iteration   1: 10846.951 ns/op
+# Warmup Iteration   2: 11765.299 ns/op
+# Warmup Iteration   3: 12375.646 ns/op
+# Warmup Iteration   4: 14066.116 ns/op
+# Warmup Iteration   5: 15025.135 ns/op
+Iteration   1: 12769.894 ns/op
+Iteration   2: 11855.262 ns/op
+Iteration   3: 11864.906 ns/op
+Iteration   4: 14180.727 ns/op
+Iteration   5: 11976.407 ns/op
+Iteration   6: 10804.697 ns/op
+Iteration   7: 10448.352 ns/op
+Iteration   8: 11354.354 ns/op
+Iteration   9: 13483.675 ns/op
+Iteration  10: 14038.081 ns/op
+
+# Run progress: 19.44% complete, ETA 00:09:36
+# Fork: 2 of 3
+# Warmup Iteration   1: 10918.861 ns/op
+# Warmup Iteration   2: 11643.645 ns/op
+# Warmup Iteration   3: 11926.402 ns/op
+# Warmup Iteration   4: 13180.311 ns/op
+# Warmup Iteration   5: 11822.358 ns/op
+Iteration   1: 12550.713 ns/op
+Iteration   2: 10669.100 ns/op
+Iteration   3: 12716.348 ns/op
+Iteration   4: 16405.876 ns/op
+Iteration   5: 14875.278 ns/op
+Iteration   6: 12194.244 ns/op
+Iteration   7: 11677.625 ns/op
+Iteration   8: 10503.586 ns/op
+Iteration   9: 10727.060 ns/op
+Iteration  10: 12526.701 ns/op
+
+# Run progress: 22.22% complete, ETA 00:10:03
+# Fork: 3 of 3
+# Warmup Iteration   1: 10690.602 ns/op
+# Warmup Iteration   2: 11481.329 ns/op
+# Warmup Iteration   3: 12034.760 ns/op
+# Warmup Iteration   4: 15428.213 ns/op
+# Warmup Iteration   5: 13663.759 ns/op
+Iteration   1: 12969.972 ns/op
+Iteration   2: 12667.401 ns/op
+Iteration   3: 11072.430 ns/op
+Iteration   4: 11337.138 ns/op
+Iteration   5: 10627.948 ns/op
+Iteration   6: 10467.716 ns/op
+Iteration   7: 11590.560 ns/op
+Iteration   8: 10959.635 ns/op
+Iteration   9: 11695.349 ns/op
+Iteration  10: 12107.645 ns/op
+
+
+Result "e6.ListInsertBenchmark.arrayList_addRemoveMiddle":
+  12103.956 ±(99.9%) 948.824 ns/op [Average]
+  (min, avg, max) = (10448.352, 12103.956, 16405.876), stdev = 1420.156
+  CI (99.9%): [11155.132, 13052.780] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.12.1, OpenJDK 64-Bit Server VM, 21.0.12.1+1-LTS
+# VM invoker: /opt/java/openjdk/bin/java
+# VM options: -Xms1g -Xmx1g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: e6.ListInsertBenchmark.linkedListScattered_addRemoveMiddle
+# Parameters: (size = 1000)
+
+# Run progress: 25.00% complete, ETA 00:10:21
+# Fork: 1 of 3
+# Warmup Iteration   1: 1589.399 ns/op
+# Warmup Iteration   2: 1741.055 ns/op
+# Warmup Iteration   3: 1580.753 ns/op
+# Warmup Iteration   4: 1450.613 ns/op
+# Warmup Iteration   5: 1444.154 ns/op
+Iteration   1: 1611.148 ns/op
+Iteration   2: 1418.016 ns/op
+Iteration   3: 1375.958 ns/op
+Iteration   4: 1390.766 ns/op
+Iteration   5: 1311.723 ns/op
+Iteration   6: 1467.983 ns/op
+Iteration   7: 1362.037 ns/op
+Iteration   8: 1305.327 ns/op
+Iteration   9: 1295.081 ns/op
+Iteration  10: 1296.663 ns/op
+
+# Run progress: 27.78% complete, ETA 00:09:41
+# Fork: 2 of 3
+# Warmup Iteration   1: 1358.150 ns/op
+# Warmup Iteration   2: 1364.057 ns/op
+# Warmup Iteration   3: 1390.513 ns/op
+# Warmup Iteration   4: 1385.463 ns/op
+# Warmup Iteration   5: 1358.387 ns/op
+Iteration   1: 1284.281 ns/op
+Iteration   2: 1350.716 ns/op
+Iteration   3: 1323.071 ns/op
+Iteration   4: 1435.782 ns/op
+Iteration   5: 1408.406 ns/op
+Iteration   6: 1639.274 ns/op
+Iteration   7: 1901.100 ns/op
+Iteration   8: 2831.275 ns/op
+Iteration   9: 1697.004 ns/op
+Iteration  10: 1554.034 ns/op
+
+# Run progress: 30.56% complete, ETA 00:09:07
+# Fork: 3 of 3
+# Warmup Iteration   1: 1404.896 ns/op
+# Warmup Iteration   2: 1571.357 ns/op
+# Warmup Iteration   3: 1457.701 ns/op
+# Warmup Iteration   4: 1302.384 ns/op
+# Warmup Iteration   5: 1353.254 ns/op
+Iteration   1: 1277.341 ns/op
+Iteration   2: 1681.281 ns/op
+Iteration   3: 1490.449 ns/op
+Iteration   4: 1355.778 ns/op
+Iteration   5: 1320.967 ns/op
+Iteration   6: 1279.217 ns/op
+Iteration   7: 1326.631 ns/op
+Iteration   8: 1415.531 ns/op
+Iteration   9: 1335.492 ns/op
+Iteration  10: 1444.557 ns/op
+
+
+Result "e6.ListInsertBenchmark.linkedListScattered_addRemoveMiddle":
+  1472.896 ±(99.9%) 198.485 ns/op [Average]
+  (min, avg, max) = (1277.341, 1472.896, 2831.275), stdev = 297.083
+  CI (99.9%): [1274.411, 1671.381] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.12.1, OpenJDK 64-Bit Server VM, 21.0.12.1+1-LTS
+# VM invoker: /opt/java/openjdk/bin/java
+# VM options: -Xms1g -Xmx1g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: e6.ListInsertBenchmark.linkedListScattered_addRemoveMiddle
+# Parameters: (size = 10000)
+
+# Run progress: 33.33% complete, ETA 00:08:36
+# Fork: 1 of 3
+# Warmup Iteration   1: 56180.792 ns/op
+# Warmup Iteration   2: 70697.223 ns/op
+# Warmup Iteration   3: 58160.190 ns/op
+# Warmup Iteration   4: 57093.783 ns/op
+# Warmup Iteration   5: 54604.207 ns/op
+Iteration   1: 63262.109 ns/op
+Iteration   2: 68390.780 ns/op
+Iteration   3: 56328.225 ns/op
+Iteration   4: 59692.434 ns/op
+Iteration   5: 59843.916 ns/op
+Iteration   6: 66376.521 ns/op
+Iteration   7: 108925.426 ns/op
+Iteration   8: 103580.763 ns/op
+Iteration   9: 125945.923 ns/op
+Iteration  10: 72444.326 ns/op
+
+# Run progress: 36.11% complete, ETA 00:08:09
+# Fork: 2 of 3
+# Warmup Iteration   1: 65806.992 ns/op
+# Warmup Iteration   2: 60450.797 ns/op
+# Warmup Iteration   3: 67837.456 ns/op
+# Warmup Iteration   4: 111907.169 ns/op
+# Warmup Iteration   5: 69693.297 ns/op
+Iteration   1: 69657.132 ns/op
+Iteration   2: 65410.756 ns/op
+Iteration   3: 55952.131 ns/op
+Iteration   4: 58920.614 ns/op
+Iteration   5: 54704.311 ns/op
+Iteration   6: 53518.326 ns/op
+Iteration   7: 52923.362 ns/op
+Iteration   8: 54302.878 ns/op
+Iteration   9: 54985.519 ns/op
+Iteration  10: 65404.816 ns/op
+
+# Run progress: 38.89% complete, ETA 00:07:43
+# Fork: 3 of 3
+# Warmup Iteration   1: 60818.453 ns/op
+# Warmup Iteration   2: 58144.602 ns/op
+# Warmup Iteration   3: 52701.615 ns/op
+# Warmup Iteration   4: 57846.617 ns/op
+# Warmup Iteration   5: 54557.216 ns/op
+Iteration   1: 59316.652 ns/op
+Iteration   2: 69093.589 ns/op
+Iteration   3: 56498.902 ns/op
+Iteration   4: 67504.560 ns/op
+Iteration   5: 59189.876 ns/op
+Iteration   6: 54979.624 ns/op
+Iteration   7: 64885.279 ns/op
+Iteration   8: 53084.917 ns/op
+Iteration   9: 57142.910 ns/op
+Iteration  10: 55610.315 ns/op
+
+
+Result "e6.ListInsertBenchmark.linkedListScattered_addRemoveMiddle":
+  65595.896 ±(99.9%) 11516.283 ns/op [Average]
+  (min, avg, max) = (52923.362, 65595.896, 125945.923), stdev = 17237.031
+  CI (99.9%): [54079.614, 77112.179] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.12.1, OpenJDK 64-Bit Server VM, 21.0.12.1+1-LTS
+# VM invoker: /opt/java/openjdk/bin/java
+# VM options: -Xms1g -Xmx1g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: e6.ListInsertBenchmark.linkedListScattered_addRemoveMiddle
+# Parameters: (size = 100000)
+
+# Run progress: 41.67% complete, ETA 00:07:15
+# Fork: 1 of 3
+# Warmup Iteration   1: 1783120.955 ns/op
+# Warmup Iteration   2: 3300823.150 ns/op
+# Warmup Iteration   3: 2813209.792 ns/op
+# Warmup Iteration   4: 3339278.164 ns/op
+# Warmup Iteration   5: 5949907.200 ns/op
+Iteration   1: 2828202.903 ns/op
+Iteration   2: 4228567.390 ns/op
+Iteration   3: 3799447.042 ns/op
+Iteration   4: 5797208.345 ns/op
+Iteration   5: 6432829.962 ns/op
+Iteration   6: 6953511.586 ns/op
+Iteration   7: 3937696.977 ns/op
+Iteration   8: 1637459.471 ns/op
+Iteration   9: 4981868.585 ns/op
+Iteration  10: 3991485.909 ns/op
+
+# Run progress: 44.44% complete, ETA 00:07:23
+# Fork: 2 of 3
+# Warmup Iteration   1: 3974662.250 ns/op
+# Warmup Iteration   2: 36531426.933 ns/op
+# Warmup Iteration   3: 315059374.900 ns/op
+# Warmup Iteration   4: 3106385.932 ns/op
+# Warmup Iteration   5: 13125219.772 ns/op
+Iteration   1: 20486690.539 ns/op
+Iteration   2: 7590298.841 ns/op
+Iteration   3: 6014986.371 ns/op
+Iteration   4: 6113164.187 ns/op
+Iteration   5: 17839599.879 ns/op
+Iteration   6: 7395123.614 ns/op
+Iteration   7: 41056601.756 ns/op
+Iteration   8: 2295358.152 ns/op
+Iteration   9: 2508734.912 ns/op
+Iteration  10: 2846230.523 ns/op
+<JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 17 seconds more...>
+
+Non-finished threads:
+
+Thread[#23,DestroyJavaVM,5,main]
+  at java.base@21.0.12.1/java.lang.Object.wait0(Native Method)
+  at java.base@21.0.12.1/java.lang.Object.wait(Object.java:366)
+  at java.base@21.0.12.1/java.lang.Thread.join(Thread.java:2079)
+  at java.base@21.0.12.1/java.lang.Thread.join(Thread.java:2155)
+  at java.base@21.0.12.1/java.lang.ApplicationShutdownHooks.runHooks(ApplicationShutdownHooks.java:114)
+  at java.base@21.0.12.1/java.lang.ApplicationShutdownHooks$1.run(ApplicationShutdownHooks.java:47)
+  at java.base@21.0.12.1/java.lang.Shutdown.runHooks(Shutdown.java:130)
+  at java.base@21.0.12.1/java.lang.Shutdown.shutdown(Shutdown.java:200)
+
+Thread[#20,Thread-0,5,main]
+  at java.base@21.0.12.1/java.util.concurrent.ConcurrentHashMap.putVal(ConcurrentHashMap.java:1032)
+  at java.base@21.0.12.1/java.util.concurrent.ConcurrentHashMap.putIfAbsent(ConcurrentHashMap.java:1541)
+  at java.base@21.0.12.1/java.lang.ClassLoader.getClassLoadingLock(ClassLoader.java:681)
+  at java.base@21.0.12.1/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:651)
+  at java.base@21.0.12.1/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:639)
+  at java.base@21.0.12.1/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+  at java.base@21.0.12.1/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+  at app//org.openjdk.jmh.util.FileUtils.<clinit>(FileUtils.java:43)
+  at app//org.openjdk.jmh.runner.link.BinaryLinkClient.close(BinaryLinkClient.java:161)
+  at app//org.openjdk.jmh.runner.ForkedMain.hangup(ForkedMain.java:138)
+  at app//org.openjdk.jmh.runner.ForkedMain$HangupThread.run(ForkedMain.java:159)
+
+
+
+# Run progress: 47.22% complete, ETA 00:08:30
+# Fork: 3 of 3
+# Warmup Iteration   1: 6782606.224 ns/op
+# Warmup Iteration   2: 3207451.790 ns/op
+# Warmup Iteration   3: 8373293.721 ns/op
+# Warmup Iteration   4: 6082120.295 ns/op
+# Warmup Iteration   5: 27575955.811 ns/op
+Iteration   1: 14321815.339 ns/op
+Iteration   2: 5210666.160 ns/op
+Iteration   3: 7237160.444 ns/op
+Iteration   4: 5144848.463 ns/op
+Iteration   5: 4863467.287 ns/op
+Iteration   6: 2790429.432 ns/op
+Iteration   7: 5993432.281 ns/op
+Iteration   8: 2795941.237 ns/op
+Iteration   9: 2763256.172 ns/op
+Iteration  10: 3879198.027 ns/op
+
+
+Result "e6.ListInsertBenchmark.linkedListScattered_addRemoveMiddle":
+  7124509.393 ±(99.9%) 5172090.334 ns/op [Average]
+  (min, avg, max) = (1637459.471, 7124509.393, 41056601.756), stdev = 7741341.912
+  CI (99.9%): [1952419.059, 12296599.727] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.12.1, OpenJDK 64-Bit Server VM, 21.0.12.1+1-LTS
+# VM invoker: /opt/java/openjdk/bin/java
+# VM options: -Xms1g -Xmx1g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: e6.ListInsertBenchmark.linkedList_addRemoveMiddle
+# Parameters: (size = 1000)
+
+# Run progress: 50.00% complete, ETA 00:08:54
+# Fork: 1 of 3
+# Warmup Iteration   1: 2284.292 ns/op
+# Warmup Iteration   2: 2379.445 ns/op
+# Warmup Iteration   3: 3755.532 ns/op
+# Warmup Iteration   4: 1520.938 ns/op
+# Warmup Iteration   5: 1781.841 ns/op
+Iteration   1: 1663.753 ns/op
+Iteration   2: 1916.841 ns/op
+Iteration   3: 2053.625 ns/op
+Iteration   4: 4808.161 ns/op
+Iteration   5: 1848.789 ns/op
+Iteration   6: 1575.854 ns/op
+Iteration   7: 2666.363 ns/op
+Iteration   8: 2191.736 ns/op
+Iteration   9: 1924.126 ns/op
+Iteration  10: 1582.319 ns/op
+
+# Run progress: 52.78% complete, ETA 00:08:26
+# Fork: 2 of 3
+# Warmup Iteration   1: 2430.900 ns/op
+# Warmup Iteration   2: 2491.206 ns/op
+# Warmup Iteration   3: 1585.926 ns/op
+# Warmup Iteration   4: 4550.445 ns/op
+# Warmup Iteration   5: 2477.545 ns/op
+Iteration   1: 2140.935 ns/op
+Iteration   2: 1554.719 ns/op
+Iteration   3: 1724.776 ns/op
+Iteration   4: 2246.511 ns/op
+Iteration   5: 1892.347 ns/op
+Iteration   6: 2288.565 ns/op
+Iteration   7: 1635.943 ns/op
+Iteration   8: 3035.024 ns/op
+Iteration   9: 2887.149 ns/op
+Iteration  10: 2024.700 ns/op
+
+# Run progress: 55.56% complete, ETA 00:07:58
+# Fork: 3 of 3
+# Warmup Iteration   1: 1974.746 ns/op
+# Warmup Iteration   2: 3173.241 ns/op
+# Warmup Iteration   3: 3632.129 ns/op
+# Warmup Iteration   4: 2250.128 ns/op
+# Warmup Iteration   5: 3766.801 ns/op
+Iteration   1: 1992.185 ns/op
+Iteration   2: 2159.531 ns/op
+Iteration   3: 2394.155 ns/op
+Iteration   4: 2416.384 ns/op
+Iteration   5: 4133.076 ns/op
+Iteration   6: 5592.816 ns/op
+Iteration   7: 3256.076 ns/op
+Iteration   8: 4047.397 ns/op
+Iteration   9: 4305.047 ns/op
+Iteration  10: 3440.019 ns/op
+
+
+Result "e6.ListInsertBenchmark.linkedList_addRemoveMiddle":
+  2579.964 ±(99.9%) 703.919 ns/op [Average]
+  (min, avg, max) = (1554.719, 2579.964, 5592.816), stdev = 1053.593
+  CI (99.9%): [1876.045, 3283.883] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.12.1, OpenJDK 64-Bit Server VM, 21.0.12.1+1-LTS
+# VM invoker: /opt/java/openjdk/bin/java
+# VM options: -Xms1g -Xmx1g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: e6.ListInsertBenchmark.linkedList_addRemoveMiddle
+# Parameters: (size = 10000)
+
+# Run progress: 58.33% complete, ETA 00:07:26
+# Fork: 1 of 3
+# Warmup Iteration   1: 19015.224 ns/op
+# Warmup Iteration   2: 18361.240 ns/op
+# Warmup Iteration   3: 23215.784 ns/op
+# Warmup Iteration   4: 26882.362 ns/op
+# Warmup Iteration   5: 26601.421 ns/op
+Iteration   1: 24265.816 ns/op
+Iteration   2: 22396.211 ns/op
+Iteration   3: 22088.917 ns/op
+Iteration   4: 21105.312 ns/op
+Iteration   5: 20952.565 ns/op
+Iteration   6: 21587.154 ns/op
+Iteration   7: 19182.530 ns/op
+Iteration   8: 19725.221 ns/op
+Iteration   9: 20599.185 ns/op
+Iteration  10: 21947.600 ns/op
+
+# Run progress: 61.11% complete, ETA 00:06:52
+# Fork: 2 of 3
+# Warmup Iteration   1: 17507.238 ns/op
+# Warmup Iteration   2: 17513.384 ns/op
+# Warmup Iteration   3: 17981.798 ns/op
+# Warmup Iteration   4: 25735.636 ns/op
+# Warmup Iteration   5: 26600.453 ns/op
+Iteration   1: 25192.230 ns/op
+Iteration   2: 23499.590 ns/op
+Iteration   3: 20096.080 ns/op
+Iteration   4: 19772.930 ns/op
+Iteration   5: 21237.218 ns/op
+Iteration   6: 20827.209 ns/op
+Iteration   7: 21174.666 ns/op
+Iteration   8: 20616.015 ns/op
+Iteration   9: 19809.657 ns/op
+Iteration  10: 20059.423 ns/op
+
+# Run progress: 63.89% complete, ETA 00:06:18
+# Fork: 3 of 3
+# Warmup Iteration   1: 17570.051 ns/op
+# Warmup Iteration   2: 18425.234 ns/op
+# Warmup Iteration   3: 19499.058 ns/op
+# Warmup Iteration   4: 26119.663 ns/op
+# Warmup Iteration   5: 22404.205 ns/op
+Iteration   1: 20233.599 ns/op
+Iteration   2: 19656.169 ns/op
+Iteration   3: 19422.359 ns/op
+Iteration   4: 20942.934 ns/op
+Iteration   5: 20501.824 ns/op
+Iteration   6: 19656.480 ns/op
+Iteration   7: 19978.561 ns/op
+Iteration   8: 19703.658 ns/op
+Iteration   9: 22991.920 ns/op
+Iteration  10: 23076.247 ns/op
+
+
+Result "e6.ListInsertBenchmark.linkedList_addRemoveMiddle":
+  21076.643 ±(99.9%) 1012.648 ns/op [Average]
+  (min, avg, max) = (19182.530, 21076.643, 25192.230), stdev = 1515.685
+  CI (99.9%): [20063.994, 22089.291] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.12.1, OpenJDK 64-Bit Server VM, 21.0.12.1+1-LTS
+# VM invoker: /opt/java/openjdk/bin/java
+# VM options: -Xms1g -Xmx1g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: e6.ListInsertBenchmark.linkedList_addRemoveMiddle
+# Parameters: (size = 100000)
+
+# Run progress: 66.67% complete, ETA 00:05:43
+# Fork: 1 of 3
+# Warmup Iteration   1: 209976.874 ns/op
+# Warmup Iteration   2: 214972.688 ns/op
+# Warmup Iteration   3: 236622.593 ns/op
+# Warmup Iteration   4: 219813.873 ns/op
+# Warmup Iteration   5: 246342.607 ns/op
+Iteration   1: 262950.426 ns/op
+Iteration   2: 207918.686 ns/op
+Iteration   3: 204591.185 ns/op
+Iteration   4: 198984.011 ns/op
+Iteration   5: 200714.794 ns/op
+Iteration   6: 221623.866 ns/op
+Iteration   7: 205324.159 ns/op
+Iteration   8: 241674.629 ns/op
+Iteration   9: 277434.324 ns/op
+Iteration  10: 214614.798 ns/op
+
+# Run progress: 69.44% complete, ETA 00:05:15
+# Fork: 2 of 3
+# Warmup Iteration   1: 240374.830 ns/op
+# Warmup Iteration   2: 219745.752 ns/op
+# Warmup Iteration   3: 234508.936 ns/op
+# Warmup Iteration   4: 227433.271 ns/op
+# Warmup Iteration   5: 201235.043 ns/op
+Iteration   1: 221861.699 ns/op
+Iteration   2: 228317.955 ns/op
+Iteration   3: 200456.977 ns/op
+Iteration   4: 198681.821 ns/op
+Iteration   5: 196175.948 ns/op
+Iteration   6: 222713.778 ns/op
+Iteration   7: 256276.023 ns/op
+Iteration   8: 201285.267 ns/op
+Iteration   9: 212539.364 ns/op
+Iteration  10: 211586.341 ns/op
+
+# Run progress: 72.22% complete, ETA 00:04:48
+# Fork: 3 of 3
+# Warmup Iteration   1: 215704.648 ns/op
+# Warmup Iteration   2: 204025.388 ns/op
+# Warmup Iteration   3: 200486.930 ns/op
+# Warmup Iteration   4: 204923.553 ns/op
+# Warmup Iteration   5: 206970.396 ns/op
+Iteration   1: 219214.306 ns/op
+Iteration   2: 198757.685 ns/op
+Iteration   3: 199379.025 ns/op
+Iteration   4: 229397.510 ns/op
+Iteration   5: 205647.085 ns/op
+Iteration   6: 205876.015 ns/op
+Iteration   7: 217035.961 ns/op
+Iteration   8: 213605.868 ns/op
+Iteration   9: 214494.397 ns/op
+Iteration  10: 216120.577 ns/op
+
+
+Result "e6.ListInsertBenchmark.linkedList_addRemoveMiddle":
+  216841.816 ±(99.9%) 13304.862 ns/op [Average]
+  (min, avg, max) = (196175.948, 216841.816, 277434.324), stdev = 19914.093
+  CI (99.9%): [203536.954, 230146.678] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.12.1, OpenJDK 64-Bit Server VM, 21.0.12.1+1-LTS
+# VM invoker: /opt/java/openjdk/bin/java
+# VM options: -Xms1g -Xmx1g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: e6.ListInsertBenchmark.linkedList_iteratorAddRemove
+# Parameters: (size = 1000)
+
+# Run progress: 75.00% complete, ETA 00:04:19
+# Fork: 1 of 3
+# Warmup Iteration   1: 34.806 ns/op
+# Warmup Iteration   2: 26.936 ns/op
+# Warmup Iteration   3: 23.528 ns/op
+# Warmup Iteration   4: 23.866 ns/op
+# Warmup Iteration   5: 29.209 ns/op
+Iteration   1: 31.286 ns/op
+Iteration   2: 27.755 ns/op
+Iteration   3: 25.799 ns/op
+Iteration   4: 26.127 ns/op
+Iteration   5: 24.966 ns/op
+Iteration   6: 31.936 ns/op
+Iteration   7: 30.484 ns/op
+Iteration   8: 25.433 ns/op
+Iteration   9: 25.556 ns/op
+Iteration  10: 25.328 ns/op
+
+# Run progress: 77.78% complete, ETA 00:03:48
+# Fork: 2 of 3
+# Warmup Iteration   1: 47.117 ns/op
+# Warmup Iteration   2: 39.354 ns/op
+# Warmup Iteration   3: 23.375 ns/op
+# Warmup Iteration   4: 23.911 ns/op
+# Warmup Iteration   5: 29.494 ns/op
+Iteration   1: 25.568 ns/op
+Iteration   2: 22.516 ns/op
+Iteration   3: 22.391 ns/op
+Iteration   4: 22.347 ns/op
+Iteration   5: 31.913 ns/op
+Iteration   6: 28.769 ns/op
+Iteration   7: 24.145 ns/op
+Iteration   8: 25.680 ns/op
+Iteration   9: 30.817 ns/op
+Iteration  10: 41.299 ns/op
+
+# Run progress: 80.56% complete, ETA 00:03:16
+# Fork: 3 of 3
+# Warmup Iteration   1: 46.069 ns/op
+# Warmup Iteration   2: 38.149 ns/op
+# Warmup Iteration   3: 33.424 ns/op
+# Warmup Iteration   4: 45.471 ns/op
+# Warmup Iteration   5: 40.923 ns/op
+Iteration   1: 25.367 ns/op
+Iteration   2: 22.996 ns/op
+Iteration   3: 27.584 ns/op
+Iteration   4: 31.095 ns/op
+Iteration   5: 24.197 ns/op
+Iteration   6: 23.403 ns/op
+Iteration   7: 27.029 ns/op
+Iteration   8: 27.956 ns/op
+Iteration   9: 25.689 ns/op
+Iteration  10: 27.417 ns/op
+
+
+Result "e6.ListInsertBenchmark.linkedList_iteratorAddRemove":
+  27.095 ±(99.9%) 2.630 ns/op [Average]
+  (min, avg, max) = (22.347, 27.095, 41.299), stdev = 3.937
+  CI (99.9%): [24.465, 29.725] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.12.1, OpenJDK 64-Bit Server VM, 21.0.12.1+1-LTS
+# VM invoker: /opt/java/openjdk/bin/java
+# VM options: -Xms1g -Xmx1g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: e6.ListInsertBenchmark.linkedList_iteratorAddRemove
+# Parameters: (size = 10000)
+
+# Run progress: 83.33% complete, ETA 00:02:46
+# Fork: 1 of 3
+# Warmup Iteration   1: 31.803 ns/op
+# Warmup Iteration   2: 25.211 ns/op
+# Warmup Iteration   3: 23.573 ns/op
+# Warmup Iteration   4: 32.962 ns/op
+# Warmup Iteration   5: 27.186 ns/op
+Iteration   1: 28.439 ns/op
+Iteration   2: 37.004 ns/op
+Iteration   3: 33.627 ns/op
+Iteration   4: 38.156 ns/op
+Iteration   5: 38.115 ns/op
+Iteration   6: 26.351 ns/op
+Iteration   7: 27.797 ns/op
+Iteration   8: 37.461 ns/op
+Iteration   9: 42.796 ns/op
+Iteration  10: 36.766 ns/op
+
+# Run progress: 86.11% complete, ETA 00:02:17
+# Fork: 2 of 3
+# Warmup Iteration   1: 160.139 ns/op
+# Warmup Iteration   2: 52.505 ns/op
+# Warmup Iteration   3: 57.422 ns/op
+# Warmup Iteration   4: 86.443 ns/op
+# Warmup Iteration   5: 127.302 ns/op
+Iteration   1: 240.693 ns/op
+Iteration   2: 128.489 ns/op
+Iteration   3: 230.431 ns/op
+Iteration   4: 223.146 ns/op
+Iteration   5: 216.092 ns/op
+Iteration   6: 163.132 ns/op
+Iteration   7: 152.523 ns/op
+Iteration   8: 215.840 ns/op
+Iteration   9: 173.145 ns/op
+Iteration  10: 117.902 ns/op
+
+# Run progress: 88.89% complete, ETA 00:01:49
+# Fork: 3 of 3
+# Warmup Iteration   1: 31.142 ns/op
+# Warmup Iteration   2: 28.695 ns/op
+# Warmup Iteration   3: 31.823 ns/op
+# Warmup Iteration   4: 29.132 ns/op
+# Warmup Iteration   5: 25.384 ns/op
+Iteration   1: 30.856 ns/op
+Iteration   2: 32.182 ns/op
+Iteration   3: 29.944 ns/op
+Iteration   4: 30.692 ns/op
+Iteration   5: 38.284 ns/op
+Iteration   6: 43.097 ns/op
+Iteration   7: 33.346 ns/op
+Iteration   8: 40.772 ns/op
+Iteration   9: 46.024 ns/op
+Iteration  10: 121.998 ns/op
+
+
+Result "e6.ListInsertBenchmark.linkedList_iteratorAddRemove":
+  88.503 ±(99.9%) 50.940 ns/op [Average]
+  (min, avg, max) = (26.351, 88.503, 240.693), stdev = 76.245
+  CI (99.9%): [37.563, 139.443] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.12.1, OpenJDK 64-Bit Server VM, 21.0.12.1+1-LTS
+# VM invoker: /opt/java/openjdk/bin/java
+# VM options: -Xms1g -Xmx1g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: e6.ListInsertBenchmark.linkedList_iteratorAddRemove
+# Parameters: (size = 100000)
+
+# Run progress: 91.67% complete, ETA 00:01:21
+# Fork: 1 of 3
+# Warmup Iteration   1: 80.751 ns/op
+# Warmup Iteration   2: 36.469 ns/op
+# Warmup Iteration   3: 30.507 ns/op
+# Warmup Iteration   4: 30.834 ns/op
+# Warmup Iteration   5: 30.877 ns/op
+Iteration   1: 51.970 ns/op
+Iteration   2: 34.441 ns/op
+Iteration   3: 28.971 ns/op
+Iteration   4: 32.524 ns/op
+Iteration   5: 34.073 ns/op
+Iteration   6: 46.224 ns/op
+Iteration   7: 43.467 ns/op
+Iteration   8: 33.019 ns/op
+Iteration   9: 32.278 ns/op
+Iteration  10: 32.291 ns/op
+
+# Run progress: 94.44% complete, ETA 00:00:55
+# Fork: 2 of 3
+# Warmup Iteration   1: 50.017 ns/op
+# Warmup Iteration   2: 49.281 ns/op
+# Warmup Iteration   3: 93.303 ns/op
+# Warmup Iteration   4: 89.402 ns/op
+# Warmup Iteration   5: 47.212 ns/op
+Iteration   1: 84.187 ns/op
+Iteration   2: 60.869 ns/op
+Iteration   3: 51.948 ns/op
+Iteration   4: 44.591 ns/op
+Iteration   5: 28.918 ns/op
+Iteration   6: 38.325 ns/op
+Iteration   7: 31.890 ns/op
+Iteration   8: 31.947 ns/op
+Iteration   9: 32.154 ns/op
+Iteration  10: 28.836 ns/op
+
+# Run progress: 97.22% complete, ETA 00:00:28
+# Fork: 3 of 3
+# Warmup Iteration   1: 45.372 ns/op
+# Warmup Iteration   2: 68.172 ns/op
+# Warmup Iteration   3: 58.250 ns/op
+# Warmup Iteration   4: 86.409 ns/op
+# Warmup Iteration   5: 186.587 ns/op
+Iteration   1: 103.437 ns/op
+Iteration   2: 47.104 ns/op
+Iteration   3: 154.794 ns/op
+Iteration   4: 178.219 ns/op
+Iteration   5: 254.143 ns/op
+Iteration   6: 761.654 ns/op
+Iteration   7: 175.151 ns/op
+Iteration   8: 293.545 ns/op
+Iteration   9: 404.373 ns/op
+Iteration  10: 574.646 ns/op
+time="2026-10-04T17:24:57+09:00" level=error msg="error waiting for container: unexpected EOF"
