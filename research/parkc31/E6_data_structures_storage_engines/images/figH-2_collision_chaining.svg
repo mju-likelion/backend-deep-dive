@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 340" width="1000" height="340" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#616161"/></marker>
+  </defs>
+  <rect width="1000" height="340" fill="#ffffff"/>
+  <text x="40" y="32" font-size="17" font-weight="700" fill="#212121">충돌과 체이닝: 같은 칸에 온 원소는 리스트로 줄을 세운다</text>
+  <text x="40" y="58" font-size="14" fill="#616161"><tspan font-family="Menlo, monospace">"Aa".hashCode() = "BB".hashCode() = 2112</tspan>, 둘 다 0번 칸</text>
+
+  <g font-size="13" text-anchor="middle">
+    <g fill="#fafafa" stroke="#9e9e9e">
+      <rect x="60" y="80" width="70" height="40"/><rect x="60" y="124" width="70" height="40"/>
+      <rect x="60" y="168" width="70" height="40"/><rect x="60" y="212" width="70" height="40"/><rect x="60" y="256" width="70" height="40"/>
+    </g>
+    <g fill="#9e9e9e" font-size="12"><text x="44" y="105">0</text><text x="44" y="149">1</text><text x="44" y="193">2</text><text x="44" y="237">3</text><text x="44" y="281">…</text></g>
+
+    <rect x="180" y="82" width="140" height="36" rx="5" fill="#e8f5e9" stroke="#2e7d32"/>
+    <text x="250" y="105">"Aa" : 1</text>
+    <rect x="370" y="82" width="140" height="36" rx="5" fill="#fff3e0" stroke="#e65100" stroke-width="2"/>
+    <text x="440" y="105" font-weight="700">"BB" : 2</text>
+    <rect x="180" y="126" width="140" height="36" rx="5" fill="#e8f5e9" stroke="#2e7d32"/>
+    <text x="250" y="149">"ab" : 3</text>
+  </g>
+  <g stroke="#616161" stroke-width="1.6" marker-end="url(#a)">
+    <line x1="95" y1="100" x2="178" y2="100"/><line x1="320" y1="100" x2="368" y2="100"/>
+    <line x1="95" y1="144" x2="178" y2="144"/>
+  </g>
+  <text x="250" y="190" font-size="12" fill="#616161" text-anchor="middle">노드 = (키, 값, 다음 노드 포인터)</text>
+
+  <rect x="560" y="76" width="410" height="226" rx="8" fill="#f5f5f5"/>
+  <text x="580" y="102" font-size="15" font-weight="700" fill="#212121">get("BB")가 실제로 하는 일</text>
+  <g font-size="14" fill="#212121">
+    <text x="580" y="134">① "BB"의 해시를 계산해서 0번 칸으로 간다</text>
+    <text x="580" y="164">② 첫 노드 "Aa"와 비교: equals? <tspan fill="#c62828" font-weight="700">아니오</tspan></text>
+    <text x="580" y="194">③ 다음 노드 "BB"와 비교: equals? <tspan fill="#2e7d32" font-weight="700">예</tspan></text>
+    <text x="580" y="224">④ 값 2를 돌려준다</text>
+  </g>
+  <text x="580" y="262" font-size="13" fill="#616161">해시가 같아도 키는 다를 수 있으니</text>
+  <text x="580" y="282" font-size="13" fill="#616161">마지막 확인은 반드시 equals로 한다</text>
+
+  <text x="40" y="326" font-size="14" fill="#212121">칸 안의 줄이 짧으면 거의 바로 찾는다. 줄이 길어질수록 ②③ 같은 비교가 늘어난다. 해시테이블의 속도는 결국 <tspan font-weight="700">줄의 길이</tspan>다.</text>
+</svg>

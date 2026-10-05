@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 510" width="1000" height="510" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,5L0,10z" fill="#2e7d32"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,5L0,10z" fill="#1565c0"/></marker>
+    <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,5L0,10z" fill="#e65100"/></marker>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#616161"/></marker>
+  </defs>
+  <rect width="1000" height="510" fill="#ffffff"/>
+  <text x="40" y="34" font-size="17" font-weight="700" fill="#212121">블룸 필터: 비트 배열 하나 + 해시 함수 k개 (그림은 k = 3)</text>
+
+  <rect x="250" y="66" width="100" height="34" rx="6" fill="#e8f5e9" stroke="#2e7d32"/>
+  <text x="300" y="88" font-size="14" text-anchor="middle">apple 추가</text>
+  <rect x="570" y="66" width="100" height="34" rx="6" fill="#e3f2fd" stroke="#1565c0"/>
+  <text x="620" y="88" font-size="14" text-anchor="middle">banana 추가</text>
+
+  <g stroke="#2e7d32" stroke-width="1.6">
+    <line x1="300" y1="100" x2="186" y2="186" marker-end="url(#ag)"/>
+    <line x1="300" y1="100" x2="402" y2="186" marker-end="url(#ag)"/>
+    <line x1="300" y1="100" x2="626" y2="186" marker-end="url(#ag)"/>
+  </g>
+  <g stroke="#1565c0" stroke-width="1.6">
+    <line x1="620" y1="100" x2="274" y2="186" marker-end="url(#ab)"/>
+    <line x1="620" y1="100" x2="410" y2="186" marker-end="url(#ab)"/>
+    <line x1="620" y1="100" x2="714" y2="186" marker-end="url(#ab)"/>
+  </g>
+
+  <g font-size="15" text-anchor="middle" font-family="Menlo, monospace">
+    <g fill="#f5f5f5" stroke="#9e9e9e">
+      <rect x="120" y="190" width="44" height="40"/><rect x="208" y="190" width="44" height="40"/>
+      <rect x="296" y="190" width="44" height="40"/><rect x="340" y="190" width="44" height="40"/>
+      <rect x="428" y="190" width="44" height="40"/><rect x="472" y="190" width="44" height="40"/>
+      <rect x="560" y="190" width="44" height="40"/><rect x="648" y="190" width="44" height="40"/>
+      <rect x="736" y="190" width="44" height="40"/><rect x="780" y="190" width="44" height="40"/>
+    </g>
+    <g fill="#a5d6a7" stroke="#2e7d32">
+      <rect x="164" y="190" width="44" height="40"/><rect x="252" y="190" width="44" height="40"/>
+      <rect x="384" y="190" width="44" height="40"/><rect x="604" y="190" width="44" height="40"/>
+      <rect x="692" y="190" width="44" height="40"/>
+    </g>
+    <rect x="516" y="190" width="44" height="40" fill="#f5f5f5" stroke="#e65100" stroke-width="3"/>
+    <text x="142" y="216">0</text><text x="186" y="216">1</text><text x="230" y="216">0</text><text x="274" y="216">1</text>
+    <text x="318" y="216">0</text><text x="362" y="216">0</text><text x="406" y="216">1</text><text x="450" y="216">0</text>
+    <text x="494" y="216">0</text><text x="538" y="216">0</text><text x="582" y="216">0</text><text x="626" y="216">1</text>
+    <text x="670" y="216">0</text><text x="714" y="216">1</text><text x="758" y="216">0</text><text x="802" y="216">0</text>
+  </g>
+  <g font-size="11" fill="#9e9e9e" text-anchor="middle">
+    <text x="142" y="246">0</text><text x="186" y="246">1</text><text x="230" y="246">2</text><text x="274" y="246">3</text>
+    <text x="318" y="246">4</text><text x="362" y="246">5</text><text x="406" y="246">6</text><text x="450" y="246">7</text>
+    <text x="494" y="246">8</text><text x="538" y="246">9</text><text x="582" y="246">10</text><text x="626" y="246">11</text>
+    <text x="670" y="246">12</text><text x="714" y="246">13</text><text x="758" y="246">14</text><text x="802" y="246">15</text>
+  </g>
+  <text x="840" y="216" font-size="13" fill="#616161">비트 6은 둘이 공유</text>
+
+  <rect x="400" y="292" width="110" height="34" rx="6" fill="#fff3e0" stroke="#e65100"/>
+  <text x="455" y="314" font-size="14" text-anchor="middle">cherry 조회</text>
+  <g stroke="#e65100" stroke-width="1.6">
+    <line x1="455" y1="292" x2="278" y2="234" marker-end="url(#ao)"/>
+    <line x1="455" y1="292" x2="536" y2="234" marker-end="url(#ao)"/>
+    <line x1="455" y1="292" x2="710" y2="234" marker-end="url(#ao)"/>
+  </g>
+  <text x="530" y="314" font-size="14" fill="#e65100">비트 9가 0이므로 <tspan font-weight="700">"확실히 없다"</tspan></text>
+  <text x="500" y="356" font-size="13" fill="#424242" text-anchor="middle">반대로 세 비트가 모두 1이면 "있을 수도 있다". 다른 원소들이 켜 둔 비트와 우연히 겹친 것일 수 있다(거짓 양성).</text>
+
+  <line x1="40" y1="378" x2="960" y2="378" stroke="#e0e0e0"/>
+  <text x="40" y="402" font-size="14" font-weight="700" fill="#212121">캐시 관통 방어에 쓰면</text>
+  <rect x="60" y="430" width="120" height="40" rx="6" fill="#f5f5f5" stroke="#616161"/>
+  <text x="120" y="455" font-size="14" text-anchor="middle">요청(key)</text>
+  <line x1="180" y1="450" x2="258" y2="450" stroke="#616161" stroke-width="1.6" marker-end="url(#a)"/>
+  <rect x="260" y="430" width="170" height="40" rx="6" fill="#e8f5e9" stroke="#2e7d32"/>
+  <text x="345" y="455" font-size="14" text-anchor="middle">블룸 필터 (메모리)</text>
+  <line x1="430" y1="442" x2="548" y2="420" stroke="#2e7d32" stroke-width="1.6" marker-end="url(#ag)"/>
+  <line x1="430" y1="458" x2="548" y2="480" stroke="#e65100" stroke-width="1.6" marker-end="url(#ao)"/>
+  <text x="470" y="420" font-size="12" fill="#2e7d32">확실히 없음</text>
+  <text x="470" y="494" font-size="12" fill="#e65100">있을 수도</text>
+  <rect x="550" y="402" width="180" height="34" rx="6" fill="#e8f5e9" stroke="#2e7d32"/>
+  <text x="640" y="424" font-size="14" text-anchor="middle">바로 "없음" 응답</text>
+  <rect x="550" y="462" width="180" height="34" rx="6" fill="#fff3e0" stroke="#e65100"/>
+  <text x="640" y="484" font-size="14" text-anchor="middle">캐시, DB 조회</text>
+  <text x="750" y="424" font-size="13" fill="#2e7d32">DB에 가지 않는다</text>
+  <text x="750" y="484" font-size="13" fill="#e65100">원래 하던 대로</text>
+</svg>

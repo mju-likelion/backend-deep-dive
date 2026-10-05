@@ -1,0 +1,15 @@
+# JMH 1.37, Temurin JDK 21.0.12, fork 3 x (warmup 5 + measurement 10) x 1s, -Xms1g -Xmx1g
+# 출처: A_list_insert.log (11개 항목), A_list_insert_iter100k.log (iterator 100000 재측정)
+Benchmark                                                (size)  Mode  Cnt        Score         Error  Units
+ListInsertBenchmark.arrayList_addRemoveMiddle              1000  avgt   30      123.996 ±      16.946  ns/op
+ListInsertBenchmark.arrayList_addRemoveMiddle             10000  avgt   30     1182.790 ±     147.597  ns/op
+ListInsertBenchmark.arrayList_addRemoveMiddle            100000  avgt   30    12103.956 ±     948.824  ns/op
+ListInsertBenchmark.linkedList_addRemoveMiddle             1000  avgt   30     2579.964 ±     703.919  ns/op
+ListInsertBenchmark.linkedList_addRemoveMiddle            10000  avgt   30    21076.643 ±    1012.648  ns/op
+ListInsertBenchmark.linkedList_addRemoveMiddle           100000  avgt   30   216841.816 ±   13304.862  ns/op
+ListInsertBenchmark.linkedListScattered_addRemoveMiddle    1000  avgt   30     1472.896 ±     198.485  ns/op
+ListInsertBenchmark.linkedListScattered_addRemoveMiddle   10000  avgt   30    65595.896 ±   11516.283  ns/op
+ListInsertBenchmark.linkedListScattered_addRemoveMiddle  100000  avgt   30  7124509.393 ± 5172090.334  ns/op
+ListInsertBenchmark.linkedList_iteratorAddRemove           1000  avgt   30       27.095 ±       2.630  ns/op
+ListInsertBenchmark.linkedList_iteratorAddRemove          10000  avgt   30       88.503 ±      50.940  ns/op
+ListInsertBenchmark.linkedList_iteratorAddRemove         100000  avgt   30       11.719 ±       0.644  ns/op

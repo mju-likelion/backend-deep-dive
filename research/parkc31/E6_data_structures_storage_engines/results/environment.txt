@@ -1,0 +1,6 @@
+측정 시각: 2026년 10월  4일 일요일 17시 05분 42초 KST
+openjdk version "21.0.12.1" 2026-08-18 LTS
+OpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)
+OpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode, sharing)
+Docker VM: CPU 8, 메모리 4181299200 bytes
+Apple M1

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 400" width="1060" height="400" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">
+  <rect width="1060" height="400" fill="#ffffff"/>
+  <text x="40" y="36" font-size="18" font-weight="700" fill="#212121">같은 '읽기 1번'의 비용 — 데이터가 어디 있느냐에 따라 천만 배 차이 (로그 스케일)</text>
+
+  <g font-size="15" fill="#212121">
+    <text x="40" y="92">L1 캐시</text>
+    <text x="40" y="140">L2 캐시</text>
+    <text x="40" y="188">메인 메모리</text>
+    <text x="40" y="236">SSD</text>
+    <text x="40" y="284">HDD</text>
+  </g>
+
+  <rect x="170" y="70" width="40" height="34" rx="4" fill="#90caf9"/>
+  <rect x="170" y="118" width="82" height="34" rx="4" fill="#64b5f6"/>
+  <rect x="170" y="166" width="180" height="34" rx="4" fill="#1e88e5"/>
+  <rect x="170" y="214" width="390" height="34" rx="4" fill="#ffb74d"/>
+  <rect x="170" y="262" width="530" height="34" rx="4" fill="#f57c00"/>
+
+  <g font-size="14" fill="#424242">
+    <text x="218" y="92">~1 ns</text>
+    <text x="260" y="140">~4 ns</text>
+    <text x="358" y="188">~100 ns</text>
+    <text x="568" y="236">~16–100 µs</text>
+    <text x="708" y="284">~수 ms</text>
+  </g>
+
+  <path d="M790 70 h10 v130 h-10" fill="none" stroke="#1565c0" stroke-width="2"/>
+  <g font-size="14" fill="#1565c0">
+    <text x="812" y="116" font-weight="700">1부 · 메모리 안의 자료구조</text>
+    <text x="812" y="138">전송 단위: 캐시 라인 64B</text>
+    <text x="812" y="160">1~4장</text>
+  </g>
+  <path d="M790 214 h10 v82 h-10" fill="none" stroke="#e65100" stroke-width="2"/>
+  <g font-size="14" fill="#e65100">
+    <text x="812" y="240" font-weight="700">2부 · 디스크 위의 저장 엔진</text>
+    <text x="812" y="262">전송 단위: 페이지 8KB</text>
+    <text x="812" y="284">5·6장</text>
+  </g>
+
+  <text x="40" y="345" font-size="15" fill="#212121">빅오는 이 다섯 줄을 모두 '1번'으로 센다. 실제 비용은 <tspan font-weight="700">어느 줄까지 내려가느냐</tspan>와 <tspan font-weight="700">몇 번 내려가느냐</tspan>로 정해진다.</text>
+  <text x="40" y="372" font-size="13" fill="#757575">수치는 하드웨어마다 다르며 자릿수만 의미가 있다.</text>
+</svg>

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 400" width="1060" height="400" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,5L0,10z" fill="#9e9e9e"/></marker>
+    <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,5L0,10z" fill="#e65100"/></marker>
+  </defs>
+  <rect width="1060" height="400" fill="#ffffff"/>
+  <text x="30" y="32" font-size="17" font-weight="700" fill="#212121">스킵리스트에서 38 찾기 — 위층에서 크게 건너뛰고, 지나치면 한 층 내려간다</text>
+
+  <g font-size="13" fill="#757575">
+    <text x="30" y="82">L3</text><text x="30" y="142">L2</text><text x="30" y="202">L1</text><text x="30" y="262">L0</text>
+  </g>
+
+  <!-- head -->
+  <g fill="#eeeeee" stroke="#616161">
+    <rect x="70" y="60" width="60" height="36"/><rect x="70" y="120" width="60" height="36"/>
+    <rect x="70" y="180" width="60" height="36"/><rect x="70" y="240" width="60" height="36"/>
+  </g>
+  <text x="100" y="296" font-size="12" text-anchor="middle" fill="#616161">head</text>
+
+  <!-- nodes: x = 170 + i*92 ; values 3,7,12,19,25,31,38,44,52 ; heights 1,2,1,4,1,2,1,3,1 -->
+  <g fill="#e3f2fd" stroke="#1565c0">
+    <rect x="170" y="240" width="56" height="36"/>
+    <rect x="262" y="180" width="56" height="36"/><rect x="262" y="240" width="56" height="36"/>
+    <rect x="354" y="240" width="56" height="36"/>
+    <rect x="446" y="60" width="56" height="36"/><rect x="446" y="120" width="56" height="36"/><rect x="446" y="180" width="56" height="36"/><rect x="446" y="240" width="56" height="36"/>
+    <rect x="538" y="240" width="56" height="36"/>
+    <rect x="630" y="180" width="56" height="36"/><rect x="630" y="240" width="56" height="36"/>
+    <rect x="814" y="120" width="56" height="36"/><rect x="814" y="180" width="56" height="36"/><rect x="814" y="240" width="56" height="36"/>
+    <rect x="906" y="240" width="56" height="36"/>
+  </g>
+  <rect x="722" y="240" width="56" height="36" fill="#ffcc80" stroke="#e65100" stroke-width="2.5"/>
+  <g font-size="14" text-anchor="middle" fill="#212121">
+    <text x="198" y="263">3</text>
+    <text x="290" y="203">7</text><text x="290" y="263">7</text>
+    <text x="382" y="263">12</text>
+    <text x="474" y="83">19</text><text x="474" y="143">19</text><text x="474" y="203">19</text><text x="474" y="263">19</text>
+    <text x="566" y="263">25</text>
+    <text x="658" y="203">31</text><text x="658" y="263">31</text>
+    <text x="750" y="263" font-weight="700">38</text>
+    <text x="842" y="143">44</text><text x="842" y="203">44</text><text x="842" y="263">44</text>
+    <text x="934" y="263">52</text>
+  </g>
+
+  <!-- links (gray) -->
+  <g stroke="#9e9e9e" stroke-width="1.5" marker-end="url(#a)">
+    <line x1="502" y1="78" x2="1000" y2="78"/>
+    <line x1="130" y1="138" x2="444" y2="138"/><line x1="502" y1="138" x2="812" y2="138"/><line x1="870" y1="138" x2="1000" y2="138"/>
+    <line x1="130" y1="198" x2="260" y2="198"/><line x1="318" y1="198" x2="444" y2="198"/><line x1="686" y1="198" x2="812" y2="198"/><line x1="870" y1="198" x2="1000" y2="198"/>
+    <line x1="130" y1="258" x2="168" y2="258"/><line x1="226" y1="258" x2="260" y2="258"/><line x1="318" y1="258" x2="352" y2="258"/>
+    <line x1="410" y1="258" x2="444" y2="258"/><line x1="502" y1="258" x2="536" y2="258"/><line x1="594" y1="258" x2="628" y2="258"/>
+    <line x1="778" y1="258" x2="812" y2="258"/><line x1="870" y1="258" x2="904" y2="258"/><line x1="962" y1="258" x2="1000" y2="258"/>
+  </g>
+  <g font-size="12" fill="#9e9e9e"><text x="1004" y="82">NIL</text><text x="1004" y="142">NIL</text><text x="1004" y="202">NIL</text><text x="1004" y="262">NIL</text></g>
+
+  <!-- search path (orange) -->
+  <g stroke="#e65100" stroke-width="3" fill="none">
+    <line x1="130" y1="78" x2="444" y2="78" marker-end="url(#ao)"/>
+    <line x1="474" y1="96" x2="474" y2="120" stroke-dasharray="4 3"/>
+    <line x1="474" y1="156" x2="474" y2="180" stroke-dasharray="4 3"/>
+    <line x1="502" y1="198" x2="628" y2="198" marker-end="url(#ao)"/>
+    <line x1="658" y1="216" x2="658" y2="240" stroke-dasharray="4 3"/>
+    <line x1="686" y1="258" x2="720" y2="258" marker-end="url(#ao)"/>
+  </g>
+  <g font-size="11" fill="#e65100">
+    <text x="510" y="104">다음이 NIL, 내려감</text>
+    <text x="510" y="164">다음이 44 &gt; 38, 내려감</text>
+    <text x="692" y="230">44 &gt; 38, 내려감</text>
+  </g>
+
+  <text x="30" y="328" font-size="14" fill="#212121">층은 노드를 넣을 때 동전 던지기로 정한다. Redis는 한 층 더 올라갈 확률 1/4, 최대 32층. 거쳐 가는 노드 수의 기댓값이 O(log n)이다.</text>
+  <text x="30" y="352" font-size="14" fill="#212121">삽입은 해당 층들의 포인터만 바꾸면 끝난다. 균형 트리와 달리 회전(rotation)이 없다.</text>
+  <text x="30" y="380" font-size="14" fill="#1565c0">Redis sorted set의 실제 구조: 원소 128개 이하면 listpack(연속 배열), 넘으면 skiplist(점수 순서) + dict(멤버에서 점수로)</text>
+</svg>

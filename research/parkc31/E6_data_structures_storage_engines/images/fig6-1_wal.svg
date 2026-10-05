@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 470" width="1040" height="470" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#2e7d32"/></marker>
+    <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#e65100"/></marker>
+  </defs>
+  <rect width="1040" height="470" fill="#ffffff"/>
+  <text x="30" y="32" font-size="17" font-weight="700" fill="#212121">WAL: 데이터 페이지보다 로그를 먼저 쓴다</text>
+
+  <rect x="30" y="50" width="450" height="130" rx="8" fill="#f1f8e9" stroke="#9ccc65"/>
+  <text x="44" y="72" font-size="13" fill="#689f38">메모리 (버퍼 풀 / memtable)</text>
+  <g font-size="14" text-anchor="middle">
+    <g fill="#e3f2fd" stroke="#1565c0">
+      <rect x="60" y="100" width="56" height="50" rx="3"/><rect x="200" y="100" width="56" height="50" rx="3"/><rect x="340" y="100" width="56" height="50" rx="3"/>
+    </g>
+    <g fill="#ffcc80" stroke="#e65100" stroke-width="2">
+      <rect x="130" y="100" width="56" height="50" rx="3"/><rect x="270" y="100" width="56" height="50" rx="3"/><rect x="410" y="100" width="56" height="50" rx="3"/>
+    </g>
+    <text x="158" y="130">A'</text><text x="298" y="130">B'</text><text x="438" y="130">C'</text>
+  </g>
+  <text x="250" y="72" font-size="12" fill="#e65100">주황 = 바뀌었지만 아직 데이터 파일에 안 쓴 페이지</text>
+
+  <line x1="480" y1="105" x2="566" y2="105" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#ag)"/>
+  <text x="523" y="96" font-size="12" fill="#2e7d32" text-anchor="middle">① 변경 내용을</text>
+  <text x="523" y="124" font-size="12" fill="#2e7d32" text-anchor="middle">로그로 먼저</text>
+
+  <text x="570" y="70" font-size="13" fill="#2e7d32" font-weight="700">WAL 파일 (끝에 추가만 한다)</text>
+  <g font-size="13" text-anchor="middle">
+    <g fill="#e8f5e9" stroke="#2e7d32">
+      <rect x="570" y="84" width="90" height="42"/><rect x="660" y="84" width="90" height="42"/><rect x="750" y="84" width="90" height="42"/>
+    </g>
+    <rect x="840" y="84" width="90" height="42" fill="#a5d6a7" stroke="#2e7d32" stroke-width="2"/>
+    <text x="615" y="110">A 변경</text><text x="705" y="110">B 변경</text><text x="795" y="110">C 변경</text><text x="885" y="110" font-weight="700">COMMIT</text>
+  </g>
+  <text x="944" y="110" font-size="14" fill="#2e7d32">…</text>
+  <text x="570" y="150" font-size="13" fill="#2e7d32">커밋 응답 전에는 <tspan font-weight="700">이 로그만 fsync</tspan>한다. 순차 쓰기 한 번.</text>
+
+  <rect x="30" y="260" width="980" height="90" rx="8" fill="#fafafa" stroke="#bdbdbd"/>
+  <text x="44" y="280" font-size="13" fill="#757575">데이터 파일 (디스크)</text>
+  <g fill="#eeeeee" stroke="#bdbdbd">
+    <rect x="60" y="292" width="50" height="42"/><rect x="120" y="292" width="50" height="42"/><rect x="240" y="292" width="50" height="42"/>
+    <rect x="300" y="292" width="50" height="42"/><rect x="360" y="292" width="50" height="42"/><rect x="480" y="292" width="50" height="42"/>
+    <rect x="540" y="292" width="50" height="42"/><rect x="660" y="292" width="50" height="42"/><rect x="720" y="292" width="50" height="42"/>
+    <rect x="780" y="292" width="50" height="42"/><rect x="900" y="292" width="50" height="42"/><rect x="960" y="292" width="40" height="42"/>
+  </g>
+  <g fill="#fff3e0" stroke="#e65100" stroke-width="2" font-size="14" text-anchor="middle">
+    <rect x="180" y="292" width="50" height="42"/><rect x="840" y="292" width="50" height="42"/><rect x="420" y="292" width="50" height="42"/>
+  </g>
+  <g font-size="14" text-anchor="middle"><text x="205" y="318">A</text><text x="865" y="318">B</text><text x="445" y="318">C</text></g>
+
+  <g stroke="#e65100" stroke-width="1.8" stroke-dasharray="6 4" fill="none">
+    <line x1="158" y1="150" x2="200" y2="288" marker-end="url(#ao)"/>
+    <line x1="298" y1="150" x2="855" y2="288" marker-end="url(#ao)"/>
+    <line x1="438" y1="150" x2="445" y2="288" marker-end="url(#ao)"/>
+  </g>
+  <text x="590" y="205" font-size="13" fill="#e65100">② 나중에 체크포인트 때 몰아서 기록 (흩어진 위치 = 랜덤 쓰기)</text>
+
+  <text x="30" y="392" font-size="14" fill="#212121"><tspan font-weight="700">③ 크래시가 나면</tspan> 데이터 파일은 마지막 체크포인트 시점 상태다. 그 뒤의 변경은 WAL을 재실행(redo)해서 되살린다.</text>
+  <text x="30" y="420" font-size="14" fill="#212121">그래서 커밋할 때마다 흩어진 페이지를 쓸 필요가 없다. 랜덤 쓰기 여러 번이 순차 쓰기 한 번으로 바뀐다.</text>
+  <text x="30" y="448" font-size="13" fill="#616161">PostgreSQL에서는 바뀐 버퍼 풀 페이지를, RocksDB와 Cassandra에서는 아직 flush 안 된 memtable을 지킨다.</text>
+</svg>
