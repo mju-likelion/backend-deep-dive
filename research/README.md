@@ -10,7 +10,7 @@
 
 | GitHub ID | 디렉토리 | 담당 주제 |
 | --- | --- | --- |
-| @cij041109-del | [research/cij041109-del](./cij041109-del) |A1 |
+| @cij041109-del | [research/cij041109-del](./cij041109-del) |A1, C7 |
 | @jjangjjangsunho | [research/jjangjjangsunho](./jjangjjangsunho) | C16, C5 |
 | @parkc31 | [research/parkc31](./parkc31) | A5, E6 |
 | @SeokH-dev | [research/SeokH-dev](./SeokH-dev) | C17 |
